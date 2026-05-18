@@ -1,0 +1,303 @@
+doctype html
+-
+  const navItems = [
+    "Gran formato",
+    "Foto producto",
+    "Stickers & labels",
+    "Papelería Fina",
+    "Material marketing",
+    "Papelería corporativa",
+    "Otros servicios",
+  ];
+
+  const services = [
+    { title: "Gran formato", className: "gran-formato" },
+    { title: "Foto producto", className: "foto-producto" },
+    { title: "Stickers & Labels", className: "stickers" },
+    { title: "Papelería Boda", className: "boda" },
+    { title: "Material Marketing", className: "marketing" },
+    { title: "Papelería Corporativa", className: "corporativa" },
+  ];
+
+  const otherServicePages = [
+    [
+      { title: "Calendario pared", className: "calendar" },
+      { title: "Reglamentos", className: "rules" },
+      { title: "Quemada de CD", className: "cd-burn" },
+      { title: "Impresión de CD", className: "cd-print" },
+    ],
+    [
+      { title: "Menú", className: "menu" },
+      { title: "Hablador de mesa", className: "table" },
+      { title: "Carnets", className: "id" },
+      { title: "Corte láser", className: "laser" },
+    ],
+    [
+      { title: "Señalización", className: "signage" },
+      { title: "Cortes MDF", className: "mdf" },
+      { title: "Impresión foto", className: "photo" },
+      { title: "Otro servicio", className: "other" },
+    ],
+  ];
+
+  const branches = [
+    {
+      name: "C.C. Holguines",
+      className: "holguines",
+      address: "Local 134-133 Cra. 100 #11-60, Cali, Valle del Cauca",
+      phone: "(602) 398-9669",
+      email: "holguines@anillandocali.com",
+      schedule: "Lun a Vie 8:00 a 18:00hs",
+    },
+    {
+      name: "Av Estación",
+      className: "estacion",
+      address: "Av. Estación #5BN San Vicente, Cali, Valle del Cauca, Colombia",
+      phone: "(602) 398-9669",
+      email: "estacion@anillandocali.com",
+      schedule: "Lun a Vie 8:00 a 18:00hs",
+    },
+  ];
+
+  const miniBranches = [
+    { name: "Sede Av Estación", email: "estacion@anillandocali.com", phone: "(602) 3989669" },
+    { name: "Sede Ermita", email: "ermita@anillandocali.com", phone: "(602) 3989669" },
+  ];
+
+  const footerProducts = [
+    "Foto producto",
+    "Stickers & Labels",
+    "Papelería Boda",
+    "Papelería Corporativa",
+    "Material Marketing",
+    "Señalización",
+    "Cortes MDF",
+  ];
+
+  const footerHelp = [
+    "Preguntas frecuentes",
+    "Problemas con el pago",
+    "Políticas de privacidad",
+    "Términos y condiciones",
+  ];
+
+mixin iconButton(label, text, extraClass)
+  a.icon-btn(class=extraClass href="#" aria-label=label)
+    span.icon= text
+    if extraClass === "icon-btn--cart"
+      span.badge(aria-label="0 items") 0
+
+mixin sectionHeader(title, subtitle, row)
+  header.section__header(class=row ? "section__header--row" : "")
+    h2.section__title= title
+    if subtitle
+      if row
+        p.section__hint= subtitle
+      else
+        p.section__subtitle= subtitle
+
+mixin serviceCard(service)
+  article.service-card(class=`service-card--${service.className}`)
+    .service-card__overlay
+      h3.service-card__title= service.title
+      a.btn.btn--small(href="#") Ver más
+
+mixin miniCard(item)
+  a.mini-card(href="#")
+    div(class=`mini-card__img mini-card__img--${item.className}`)
+    .mini-card__body
+      span.mini-card__title= item.title
+      span.mini-card__arrow(aria-hidden="true") →
+
+mixin branchCard(branch)
+  article.branch-card
+    div(class=`branch-card__photo branch-card__photo--${branch.className}` aria-hidden="true")
+    .branch-card__content
+      h3.branch-card__title= branch.name
+      p.branch-card__text= branch.address
+      p.branch-card__meta
+        strong Teléfono:
+        |  #{branch.phone}
+      p.branch-card__meta
+        strong Correo:
+        |  #{branch.email}
+      .branch-card__footer
+        span.tag= branch.schedule
+        button.icon-chip(type="button" aria-label="Ubicación") ⌖
+
+mixin footerLinks(title, links)
+  .footer-col
+    h3.footer-title= title
+    ul.footer-list
+      each link in links
+        li
+          a(href="#")= link
+
+html(lang="es")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title CopyServices - Home
+    link(rel="stylesheet" href="css/styles.css")
+
+  body
+    header.site-header
+      .container.header-row
+        a.brand(href="#" aria-label="Inicio")
+          span.brand__mark(aria-hidden="true")
+            svg(viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="Logo")
+              defs
+                linearGradient#g(x1="0" y1="0" x2="1" y2="1")
+                  stop(offset="0" stop-color="#0b6b7a")
+                  stop(offset="1" stop-color="#2aa6b8")
+              path(d="M24 4c11 0 20 9 20 20S35 44 24 44 4 35 4 24 13 4 24 4Z" fill="none" stroke="url(#g)" stroke-width="4")
+              path(d="M16 14c8 0 18 6 18 14" fill="none" stroke="#f09a2a" stroke-width="4" stroke-linecap="round")
+          span.brand__text
+            span.brand__name CopyServices
+            span.brand__tagline Donde tus ideas toman forma.
+
+        nav.header-icons(aria-label="Acciones rápidas")
+          +iconButton("Ayuda", "?")
+          +iconButton("Facebook", "f")
+          +iconButton("Instagram", "◎")
+          +iconButton("Carrito", "🛍", "icon-btn--cart")
+
+      .nav-strip
+        .container
+          nav.main-nav(aria-label="Navegación principal")
+            each item in navItems
+              a.main-nav__link(href="#")
+                | #{item} 
+                span(aria-hidden="true") ▾
+
+    section.hero(aria-label="Hero")
+      .container.hero-grid
+        .hero-shot.hero-shot--left(role="img" aria-label="Mockup cuaderno anillado")
+        .hero-shot.hero-shot--right(role="img" aria-label="Mockup libro / catálogo")
+
+    main
+      section.section
+        .container
+          +sectionHeader("Nuestros servicios")
+          .service-grid
+            each service in services
+              +serviceCard(service)
+
+      section.section.section--soft
+        .container
+          +sectionHeader("Otros servicios", "Carrusel sin JavaScript (CSS + radio buttons). Reemplaza/añade tarjetas fácilmente.", true)
+
+          .carousel(aria-label="Carrusel de otros servicios")
+            input#s1.carousel__radio(type="radio" name="slides" checked)
+            input#s2.carousel__radio(type="radio" name="slides")
+            input#s3.carousel__radio(type="radio" name="slides")
+
+            .carousel__viewport
+              .carousel__track
+                each page in otherServicePages
+                  .carousel__page
+                    each item in page
+                      +miniCard(item)
+
+            .carousel__arrows(aria-hidden="true")
+              label.carousel__arrow.carousel__arrow--prev(for="s1") ‹
+              label.carousel__arrow.carousel__arrow--next(for="s2") ›
+              label.carousel__arrow.carousel__arrow--prev.carousel__arrow--p2(for="s1") ‹
+              label.carousel__arrow.carousel__arrow--next.carousel__arrow--p2(for="s3") ›
+              label.carousel__arrow.carousel__arrow--prev.carousel__arrow--p3(for="s2") ‹
+              label.carousel__arrow.carousel__arrow--next.carousel__arrow--p3(for="s3") ›
+
+            .carousel__dots(aria-label="Paginación")
+              each page, index in otherServicePages
+                label.dot(for=`s${index + 1}` aria-label=`Página ${index + 1}`)
+
+      section.section
+        .container
+          +sectionHeader("Nuestras sedes", "¡Visita nuestras sedes estratégicamente ubicadas!")
+
+          .branches
+            aside.branches__left(aria-label="Listado de sedes")
+              .branches__controls
+                button.pill(type="button")
+                  | Presiona para ver más lugares 
+                  span(aria-hidden="true") ▾
+                button.pill.pill--icon(type="button" aria-label="Anterior") ‹
+                button.pill.pill--icon(type="button" aria-label="Siguiente") ›
+
+              each branch in branches
+                +branchCard(branch)
+
+            .branches__map(aria-label="Mapa")
+              iframe(
+                title="Mapa - Sedes"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Cali%20Valle%20del%20Cauca&output=embed"
+              )
+
+      section.section.section--contact
+        .container.contact
+          .contact__form
+            h2.section__title Contacto
+            p.contact__lead Con más de 30 años de experiencia, entendemos que estar a la vanguardia de la tecnología nos permitirá prestar el mejor servicio.
+
+            form.form(action="#" method="post")
+              label.field
+                span.field__label Nombre y apellido
+                input.field__input(type="text" name="name" placeholder="Nombre")
+
+              label.field
+                span.field__label Email
+                input.field__input(type="email" name="email" placeholder="Email")
+                span.field__icon(aria-hidden="true") ✳
+
+              label.field
+                span.field__label Teléfono
+                input.field__input(type="tel" name="phone" placeholder="Ej: 32124")
+
+              label.field
+                span.field__label Mensaje
+                textarea.field__textarea(name="message" rows="4" placeholder="Escriba su mensaje")
+
+              button.btn(type="submit") Enviar
+
+          .contact__right
+            .contact__art(role="img" aria-label="Ilustración")
+
+            .mini-branches(aria-label="Tarjetas de sedes")
+              each branch in miniBranches
+                article.mini-branch
+                  h3.mini-branch__title= branch.name
+                  p.mini-branch__line ✉ #{branch.email}
+                  p.mini-branch__line ☎ #{branch.phone}
+
+    footer.site-footer
+      .container.footer-top
+        .footer-col
+          h3.footer-title Contacto
+          ul.footer-list
+            li
+              span.muted ☎
+              |  (602) 398 9669
+            li
+              span.muted ✉
+              |  contacto@anillandocali.com
+
+          a.whatsapp(href="#" aria-label="Abrir chat")
+            span.whatsapp__dot(aria-hidden="true") 🟢
+            | Abrir chat
+
+          .footer-social(aria-label="Redes sociales")
+            a.social(href="#" aria-label="Instagram") ◎
+            a.social(href="#" aria-label="Facebook") f
+            a.social(href="#" aria-label="YouTube") ▶
+
+        +footerLinks("Productos", footerProducts)
+        +footerLinks("Ayuda", footerHelp)
+
+      .footer-bottom
+        .container.footer-bottom__row
+          span.muted © 2026 - Maquetación Pug/CSS
+          span.muted
+            | Edita la página en 
+            code index.pug

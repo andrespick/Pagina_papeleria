@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "node build.js",
+    "watch": "node build.js --watch"
+  },
+  "dependencies": {
+    "pug": "^3.0.4"
+  }
+}

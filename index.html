@@ -1,487 +1,258 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CopyServices — Home (maquetación)</title>
-
-  <!--
-    Estructura de archivos
-    ├─ index.html
-    └─ css/
-       └─ styles.css
-
-    Nota:
-    - Esta es una maquetación (HTML + CSS) inspirada en las capturas.
-    - No depende de frameworks.
-    - “Otros servicios” usa un carrusel 100% CSS (radio buttons).
-  -->
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-
-<body>
-  <!-- =======================
-       HEADER / NAV
-       ======================= -->
-  <header class="site-header">
-    <div class="container header-row">
-      <a class="brand" href="#" aria-label="Inicio">
-        <!-- Logo (SVG simple editable). Reemplázalo por tu imagen si quieres -->
-        <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="Logo">
-            <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#0b6b7a" />
-                <stop offset="1" stop-color="#2aa6b8" />
-              </linearGradient>
-            </defs>
-            <path d="M24 4c11 0 20 9 20 20S35 44 24 44 4 35 4 24 13 4 24 4Z" fill="none" stroke="url(#g)"
-              stroke-width="4" />
-            <path d="M16 14c8 0 18 6 18 14" fill="none" stroke="#f09a2a" stroke-width="4" stroke-linecap="round" />
-          </svg>
-        </span>
-        <span class="brand__text">
-          <span class="brand__name">CopyServices</span>
-          <span class="brand__tagline">Donde tus ideas toman forma.</span>
-        </span>
-      </a>
-
-      <nav class="header-icons" aria-label="Acciones rápidas">
-        <a class="icon-btn" href="#" aria-label="Ayuda">
-          <span class="icon">?</span>
-        </a>
-        <a class="icon-btn" href="#" aria-label="Facebook">
-          <span class="icon">f</span>
-        </a>
-        <a class="icon-btn" href="#" aria-label="Instagram">
-          <span class="icon">◎</span>
-        </a>
-        <a class="icon-btn icon-btn--cart" href="#" aria-label="Carrito">
-          <span class="icon">🛍</span>
-          <span class="badge" aria-label="0 items">0</span>
-        </a>
-      </nav>
-    </div>
-
-    <div class="nav-strip">
-      <div class="container">
-        <nav class="main-nav" aria-label="Navegación principal">
-          <a href="#" class="main-nav__link">Gran formato <span aria-hidden="true">▾</span></a>
-          <a href="#" class="main-nav__link">Foto producto <span aria-hidden="true">▾</span></a>
-          <a href="#" class="main-nav__link">Stickers &amp; labels <span aria-hidden="true">▾</span></a>
-          <a href="#" class="main-nav__link">Papelería Fina <span aria-hidden="true">▾</span></a>
-          <a href="#" class="main-nav__link">Material marketing <span aria-hidden="true">▾</span></a>
-          <a href="#" class="main-nav__link">Papelería corporativa <span aria-hidden="true">▾</span></a>
-          <a href="#" class="main-nav__link">Otros servicios <span aria-hidden="true">▾</span></a>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CopyServices - Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-row"><a class="brand" href="#" aria-label="Inicio"><span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="Logo">
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#0b6b7a"></stop>
+                  <stop offset="1" stop-color="#2aa6b8"></stop>
+                </linearGradient>
+              </defs>
+              <path d="M24 4c11 0 20 9 20 20S35 44 24 44 4 35 4 24 13 4 24 4Z" fill="none" stroke="url(#g)" stroke-width="4"></path>
+              <path d="M16 14c8 0 18 6 18 14" fill="none" stroke="#f09a2a" stroke-width="4" stroke-linecap="round"></path>
+            </svg></span><span class="brand__text"><span class="brand__name">CopyServices</span><span class="brand__tagline">Donde tus ideas toman forma.</span></span></a>
+        <nav class="header-icons" aria-label="Acciones rápidas"><a class="icon-btn" href="#" aria-label="Ayuda"><span class="icon">?</span></a><a class="icon-btn" href="#" aria-label="Facebook"><span class="icon">f</span></a><a class="icon-btn" href="#" aria-label="Instagram"><span class="icon">◎</span></a><a class="icon-btn icon-btn--cart" href="#" aria-label="Carrito"><span class="icon">🛍</span><span class="badge" aria-label="0 items">0</span></a>
         </nav>
       </div>
-    </div>
-  </header>
-
-  <!-- =======================
-       HERO (IMAGENES / MOCKUPS)
-       ======================= -->
-  <section class="hero" aria-label="Hero">
-    <div class="container hero-grid">
-      <div class="hero-shot hero-shot--left" role="img" aria-label="Mockup cuaderno anillado"></div>
-      <div class="hero-shot hero-shot--right" role="img" aria-label="Mockup libro / catálogo"></div>
-    </div>
-  </section>
-
-  <main>
-    <!-- =======================
-         NUESTROS SERVICIOS (GRID)
-         ======================= -->
-    <section class="section">
-      <div class="container">
-        <header class="section__header">
-          <h2 class="section__title">Nuestros servicios</h2>
-        </header>
-
-        <div class="service-grid">
-          <!-- Card 1 -->
-          <article class="service-card service-card--gran-formato">
-            <div class="service-card__overlay">
-              <h3 class="service-card__title">Gran formato</h3>
-              <a class="btn btn--small" href="#">Ver más</a>
-            </div>
-          </article>
-
-          <!-- Card 2 -->
-          <article class="service-card service-card--foto-producto">
-            <div class="service-card__overlay">
-              <h3 class="service-card__title">Foto producto</h3>
-              <a class="btn btn--small" href="#">Ver más</a>
-            </div>
-          </article>
-
-          <!-- Card 3 -->
-          <article class="service-card service-card--stickers">
-            <div class="service-card__overlay">
-              <h3 class="service-card__title">Stickers &amp; Labels</h3>
-              <a class="btn btn--small" href="#">Ver más</a>
-            </div>
-          </article>
-
-          <!-- Card 4 -->
-          <article class="service-card service-card--boda">
-            <div class="service-card__overlay">
-              <h3 class="service-card__title">Papelería Boda</h3>
-              <a class="btn btn--small" href="#">Ver más</a>
-            </div>
-          </article>
-
-          <!-- Card 5 -->
-          <article class="service-card service-card--marketing">
-            <div class="service-card__overlay">
-              <h3 class="service-card__title">Material Marketing</h3>
-              <a class="btn btn--small" href="#">Ver más</a>
-            </div>
-          </article>
-
-          <!-- Card 6 -->
-          <article class="service-card service-card--corporativa">
-            <div class="service-card__overlay">
-              <h3 class="service-card__title">Papelería Corporativa</h3>
-              <a class="btn btn--small" href="#">Ver más</a>
-            </div>
-          </article>
+      <div class="nav-strip">
+        <div class="container">
+          <nav class="main-nav" aria-label="Navegación principal"><a class="main-nav__link" href="#">Gran formato <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Foto producto <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Stickers &amp; labels <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Papelería Fina <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Material marketing <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Papelería corporativa <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Otros servicios <span aria-hidden="true">▾</span></a>
+          </nav>
         </div>
       </div>
-    </section>
-
-    <!-- =======================
-         OTROS SERVICIOS (CARRUSEL CSS)
-         ======================= -->
-    <section class="section section--soft">
-      <div class="container">
-        <header class="section__header section__header--row">
-          <h2 class="section__title">Otros servicios</h2>
-          <p class="section__hint">Carrusel sin JavaScript (CSS + radio buttons). Reemplaza/añade tarjetas fácilmente.
-          </p>
-        </header>
-
-        <!-- Controles del carrusel (CSS-only) -->
-        <div class="carousel" aria-label="Carrusel de otros servicios">
-          <input class="carousel__radio" type="radio" name="slides" id="s1" checked />
-          <input class="carousel__radio" type="radio" name="slides" id="s2" />
-          <input class="carousel__radio" type="radio" name="slides" id="s3" />
-
-          <!-- Pista (track) -->
-          <div class="carousel__viewport">
-            <div class="carousel__track">
-              <!-- Página 1 (4 items visibles) -->
-              <div class="carousel__page">
-                <a class="mini-card" href="#">
-                  <div class="mini-card__img mini-card__img--calendar"></div>
-                  <div class="mini-card__body">
-                    <span class="mini-card__title">Calendario pared</span>
-                    <span class="mini-card__arrow" aria-hidden="true">→</span>
-                  </div>
-                </a>
-
-                <a class="mini-card" href="#">
-                  <div class="mini-card__img mini-card__img--rules"></div>
-                  <div class="mini-card__body">
-                    <span class="mini-card__title">Reglamentos</span>
-                    <span class="mini-card__arrow" aria-hidden="true">→</span>
-                  </div>
-                </a>
-
-                <a class="mini-card" href="#">
-                  <div class="mini-card__img mini-card__img--cd-burn"></div>
-                  <div class="mini-card__body">
-                    <span class="mini-card__title">Quemada de CD</span>
-                    <span class="mini-card__arrow" aria-hidden="true">→</span>
-                  </div>
-                </a>
-
-                <a class="mini-card" href="#">
-                  <div class="mini-card__img mini-card__img--cd-print"></div>
-                  <div class="mini-card__body">
-                    <span class="mini-card__title">Impresión de CD</span>
-                    <span class="mini-card__arrow" aria-hidden="true">→</span>
-                  </div>
-                </a>
-              </div>
-
-              <!-- Página 2 -->
-              <div class="carousel__page">
-                <a class="mini-card" href="#">
-                  <div class="mini-card__img mini-card__img--menu"></div>
-                  <div class="mini-card__body">
-                    <span class="mini-card__title">Menú</span>
-                    <span class="mini-card__arrow" aria-hidden="true">→</span>
-                  </div>
-                </a>
-
-                <a class="mini-card" href="#">
-                  <div class="mini-card__img mini-card__img--table"></div>
-                  <div class="mini-card__body">
-                    <span class="mini-card__title">Hablador de mesa</span>
-                    <span class="mini-card__arrow" aria-hidden="true">→</span>
-                  </div>
-                </a>
-
-                <a class="mini-card" href="#">
-                  <div class="mini-card__img mini-card__img--id"></div>
-                  <div class="mini-card__body">
-                    <span class="mini-card__title">Carnets</span>
-                    <span class="mini-card__arrow" aria-hidden="true">→</span>
-                  </div>
-                </a>
-
-                <a class="mini-card" href="#">
-                  <div class="mini-card__img mini-card__img--laser"></div>
-                  <div class="mini-card__body">
-                    <span class="mini-card__title">Corte láser</span>
-                    <span class="mini-card__arrow" aria-hidden="true">→</span>
-                  </div>
-                </a>
-              </div>
-
-              <!-- Página 3 -->
-              <div class="carousel__page">
-                <a class="mini-card" href="#">
-                  <div class="mini-card__img mini-card__img--signage"></div>
-                  <div class="mini-card__body">
-                    <span class="mini-card__title">Señalización</span>
-                    <span class="mini-card__arrow" aria-hidden="true">→</span>
-                  </div>
-                </a>
-
-                <a class="mini-card" href="#">
-                  <div class="mini-card__img mini-card__img--mdf"></div>
-                  <div class="mini-card__body">
-                    <span class="mini-card__title">Cortes MDF</span>
-                    <span class="mini-card__arrow" aria-hidden="true">→</span>
-                  </div>
-                </a>
-
-                <a class="mini-card" href="#">
-                  <div class="mini-card__img mini-card__img--photo"></div>
-                  <div class="mini-card__body">
-                    <span class="mini-card__title">Impresión foto</span>
-                    <span class="mini-card__arrow" aria-hidden="true">→</span>
-                  </div>
-                </a>
-
-                <a class="mini-card" href="#">
-                  <div class="mini-card__img mini-card__img--other"></div>
-                  <div class="mini-card__body">
-                    <span class="mini-card__title">Otro servicio</span>
-                    <span class="mini-card__arrow" aria-hidden="true">→</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Flechas (CSS-only: apuntan a radios) -->
-          <div class="carousel__arrows" aria-hidden="true">
-            <label class="carousel__arrow carousel__arrow--prev" for="s1">‹</label>
-            <label class="carousel__arrow carousel__arrow--next" for="s2">›</label>
-
-            <label class="carousel__arrow carousel__arrow--prev carousel__arrow--p2" for="s1">‹</label>
-            <label class="carousel__arrow carousel__arrow--next carousel__arrow--p2" for="s3">›</label>
-
-            <label class="carousel__arrow carousel__arrow--prev carousel__arrow--p3" for="s2">‹</label>
-            <label class="carousel__arrow carousel__arrow--next carousel__arrow--p3" for="s3">›</label>
-          </div>
-
-          <!-- Dots -->
-          <div class="carousel__dots" aria-label="Paginación">
-            <label class="dot" for="s1" aria-label="Página 1"></label>
-            <label class="dot" for="s2" aria-label="Página 2"></label>
-            <label class="dot" for="s3" aria-label="Página 3"></label>
-          </div>
-        </div>
+    </header>
+    <section class="hero" aria-label="Hero">
+      <div class="container hero-grid">
+        <div class="hero-shot hero-shot--left" role="img" aria-label="Mockup cuaderno anillado"></div>
+        <div class="hero-shot hero-shot--right" role="img" aria-label="Mockup libro / catálogo"></div>
       </div>
     </section>
-
-    <!-- =======================
-         NUESTRAS SEDES (LISTA + MAPA)
-         ======================= -->
-    <section class="section">
-      <div class="container">
-        <header class="section__header">
-          <h2 class="section__title">Nuestras sedes</h2>
-          <p class="section__subtitle">¡Visita nuestras sedes estratégicamente ubicadas!</p>
-        </header>
-
-        <div class="branches">
-          <!-- Panel izquierdo -->
-          <aside class="branches__left" aria-label="Listado de sedes">
-            <div class="branches__controls">
-              <button class="pill" type="button">Presiona para ver más lugares <span
-                  aria-hidden="true">▾</span></button>
-              <button class="pill pill--icon" type="button" aria-label="Anterior">‹</button>
-              <button class="pill pill--icon" type="button" aria-label="Siguiente">›</button>
-            </div>
-
-            <!-- Sede 1 -->
-            <article class="branch-card">
-              <div class="branch-card__photo branch-card__photo--holguines" aria-hidden="true"></div>
-              <div class="branch-card__content">
-                <h3 class="branch-card__title">C.C. Holguines</h3>
-                <p class="branch-card__text">
-                  Local 134-133 Cra. 100 #11-60, Cali, Valle del Cauca
-                </p>
-                <p class="branch-card__meta"><strong>Teléfono:</strong> (602) 398-9669</p>
-                <p class="branch-card__meta"><strong>Correo:</strong> holguines@anillandocali.com</p>
-                <div class="branch-card__footer">
-                  <span class="tag">Lun a Vie 8:00 a 18:00hs</span>
-                  <button class="icon-chip" type="button" aria-label="Ubicación">⌖</button>
+    <main>
+      <section class="section">
+        <div class="container">
+          <header class="section__header">
+            <h2 class="section__title">Nuestros servicios</h2>
+          </header>
+          <div class="service-grid">
+            <article class="service-card service-card--gran-formato">
+              <div class="service-card__overlay">
+                <h3 class="service-card__title">Gran formato</h3><a class="btn btn--small" href="#">Ver más</a>
+              </div>
+            </article>
+            <article class="service-card service-card--foto-producto">
+              <div class="service-card__overlay">
+                <h3 class="service-card__title">Foto producto</h3><a class="btn btn--small" href="#">Ver más</a>
+              </div>
+            </article>
+            <article class="service-card service-card--stickers">
+              <div class="service-card__overlay">
+                <h3 class="service-card__title">Stickers &amp; Labels</h3><a class="btn btn--small" href="#">Ver más</a>
+              </div>
+            </article>
+            <article class="service-card service-card--boda">
+              <div class="service-card__overlay">
+                <h3 class="service-card__title">Papelería Boda</h3><a class="btn btn--small" href="#">Ver más</a>
+              </div>
+            </article>
+            <article class="service-card service-card--marketing">
+              <div class="service-card__overlay">
+                <h3 class="service-card__title">Material Marketing</h3><a class="btn btn--small" href="#">Ver más</a>
+              </div>
+            </article>
+            <article class="service-card service-card--corporativa">
+              <div class="service-card__overlay">
+                <h3 class="service-card__title">Papelería Corporativa</h3><a class="btn btn--small" href="#">Ver más</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section section--soft">
+        <div class="container">
+          <header class="section__header section__header--row">
+            <h2 class="section__title">Otros servicios</h2>
+            <p class="section__hint">Carrusel sin JavaScript (CSS + radio buttons). Reemplaza/añade tarjetas fácilmente.</p>
+          </header>
+          <div class="carousel" aria-label="Carrusel de otros servicios">
+            <input class="carousel__radio" id="s1" type="radio" name="slides" checked>
+            <input class="carousel__radio" id="s2" type="radio" name="slides">
+            <input class="carousel__radio" id="s3" type="radio" name="slides">
+            <div class="carousel__viewport">
+              <div class="carousel__track">
+                <div class="carousel__page"><a class="mini-card" href="#">
+                    <div class="mini-card__img mini-card__img--calendar"></div>
+                    <div class="mini-card__body"><span class="mini-card__title">Calendario pared</span><span class="mini-card__arrow" aria-hidden="true">→</span></div></a><a class="mini-card" href="#">
+                    <div class="mini-card__img mini-card__img--rules"></div>
+                    <div class="mini-card__body"><span class="mini-card__title">Reglamentos</span><span class="mini-card__arrow" aria-hidden="true">→</span></div></a><a class="mini-card" href="#">
+                    <div class="mini-card__img mini-card__img--cd-burn"></div>
+                    <div class="mini-card__body"><span class="mini-card__title">Quemada de CD</span><span class="mini-card__arrow" aria-hidden="true">→</span></div></a><a class="mini-card" href="#">
+                    <div class="mini-card__img mini-card__img--cd-print"></div>
+                    <div class="mini-card__body"><span class="mini-card__title">Impresión de CD</span><span class="mini-card__arrow" aria-hidden="true">→</span></div></a>
+                </div>
+                <div class="carousel__page"><a class="mini-card" href="#">
+                    <div class="mini-card__img mini-card__img--menu"></div>
+                    <div class="mini-card__body"><span class="mini-card__title">Menú</span><span class="mini-card__arrow" aria-hidden="true">→</span></div></a><a class="mini-card" href="#">
+                    <div class="mini-card__img mini-card__img--table"></div>
+                    <div class="mini-card__body"><span class="mini-card__title">Hablador de mesa</span><span class="mini-card__arrow" aria-hidden="true">→</span></div></a><a class="mini-card" href="#">
+                    <div class="mini-card__img mini-card__img--id"></div>
+                    <div class="mini-card__body"><span class="mini-card__title">Carnets</span><span class="mini-card__arrow" aria-hidden="true">→</span></div></a><a class="mini-card" href="#">
+                    <div class="mini-card__img mini-card__img--laser"></div>
+                    <div class="mini-card__body"><span class="mini-card__title">Corte láser</span><span class="mini-card__arrow" aria-hidden="true">→</span></div></a>
+                </div>
+                <div class="carousel__page"><a class="mini-card" href="#">
+                    <div class="mini-card__img mini-card__img--signage"></div>
+                    <div class="mini-card__body"><span class="mini-card__title">Señalización</span><span class="mini-card__arrow" aria-hidden="true">→</span></div></a><a class="mini-card" href="#">
+                    <div class="mini-card__img mini-card__img--mdf"></div>
+                    <div class="mini-card__body"><span class="mini-card__title">Cortes MDF</span><span class="mini-card__arrow" aria-hidden="true">→</span></div></a><a class="mini-card" href="#">
+                    <div class="mini-card__img mini-card__img--photo"></div>
+                    <div class="mini-card__body"><span class="mini-card__title">Impresión foto</span><span class="mini-card__arrow" aria-hidden="true">→</span></div></a><a class="mini-card" href="#">
+                    <div class="mini-card__img mini-card__img--other"></div>
+                    <div class="mini-card__body"><span class="mini-card__title">Otro servicio</span><span class="mini-card__arrow" aria-hidden="true">→</span></div></a>
                 </div>
               </div>
-            </article>
-
-            <!-- Sede 2 -->
-            <article class="branch-card">
-              <div class="branch-card__photo branch-card__photo--estacion" aria-hidden="true"></div>
-              <div class="branch-card__content">
-                <h3 class="branch-card__title">Av Estación</h3>
-                <p class="branch-card__text">
-                  Av. Estación #5BN San Vicente, Cali, Valle del Cauca, Colombia
-                </p>
-                <p class="branch-card__meta"><strong>Teléfono:</strong> (602) 398-9669</p>
-                <p class="branch-card__meta"><strong>Correo:</strong> estacion@anillandocali.com</p>
-                <div class="branch-card__footer">
-                  <span class="tag">Lun a Vie 8:00 a 18:00hs</span>
-                  <button class="icon-chip" type="button" aria-label="Ubicación">⌖</button>
-                </div>
+            </div>
+            <div class="carousel__arrows" aria-hidden="true">
+              <label class="carousel__arrow carousel__arrow--prev" for="s1">‹</label>
+              <label class="carousel__arrow carousel__arrow--next" for="s2">›</label>
+              <label class="carousel__arrow carousel__arrow--prev carousel__arrow--p2" for="s1">‹</label>
+              <label class="carousel__arrow carousel__arrow--next carousel__arrow--p2" for="s3">›</label>
+              <label class="carousel__arrow carousel__arrow--prev carousel__arrow--p3" for="s2">‹</label>
+              <label class="carousel__arrow carousel__arrow--next carousel__arrow--p3" for="s3">›</label>
+            </div>
+            <div class="carousel__dots" aria-label="Paginación">
+              <label class="dot" for="s1" aria-label="Página 1"></label>
+              <label class="dot" for="s2" aria-label="Página 2"></label>
+              <label class="dot" for="s3" aria-label="Página 3"></label>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <header class="section__header">
+            <h2 class="section__title">Nuestras sedes</h2>
+            <p class="section__subtitle">¡Visita nuestras sedes estratégicamente ubicadas!</p>
+          </header>
+          <div class="branches">
+            <aside class="branches__left" aria-label="Listado de sedes">
+              <div class="branches__controls">
+                <button class="pill" type="button">Presiona para ver más lugares <span aria-hidden="true">▾</span></button>
+                <button class="pill pill--icon" type="button" aria-label="Anterior">‹</button>
+                <button class="pill pill--icon" type="button" aria-label="Siguiente">›</button>
               </div>
-            </article>
-          </aside>
-
-          <!-- Panel derecho (mapa) -->
-          <div class="branches__map" aria-label="Mapa">
-            <!-- Reemplaza el src por tu embed real -->
-            <iframe title="Mapa — Sedes" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=Cali%20Valle%20del%20Cauca&output=embed">
-            </iframe>
+              <article class="branch-card">
+                <div class="branch-card__photo branch-card__photo--holguines" aria-hidden="true"></div>
+                <div class="branch-card__content">
+                  <h3 class="branch-card__title">C.C. Holguines</h3>
+                  <p class="branch-card__text">Local 134-133 Cra. 100 #11-60, Cali, Valle del Cauca</p>
+                  <p class="branch-card__meta"><strong>Teléfono:</strong> (602) 398-9669</p>
+                  <p class="branch-card__meta"><strong>Correo:</strong> holguines@anillandocali.com</p>
+                  <div class="branch-card__footer"><span class="tag">Lun a Vie 8:00 a 18:00hs</span>
+                    <button class="icon-chip" type="button" aria-label="Ubicación">⌖</button>
+                  </div>
+                </div>
+              </article>
+              <article class="branch-card">
+                <div class="branch-card__photo branch-card__photo--estacion" aria-hidden="true"></div>
+                <div class="branch-card__content">
+                  <h3 class="branch-card__title">Av Estación</h3>
+                  <p class="branch-card__text">Av. Estación #5BN San Vicente, Cali, Valle del Cauca, Colombia</p>
+                  <p class="branch-card__meta"><strong>Teléfono:</strong> (602) 398-9669</p>
+                  <p class="branch-card__meta"><strong>Correo:</strong> estacion@anillandocali.com</p>
+                  <div class="branch-card__footer"><span class="tag">Lun a Vie 8:00 a 18:00hs</span>
+                    <button class="icon-chip" type="button" aria-label="Ubicación">⌖</button>
+                  </div>
+                </div>
+              </article>
+            </aside>
+            <div class="branches__map" aria-label="Mapa">
+              <iframe title="Mapa - Sedes" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Cali%20Valle%20del%20Cauca&amp;output=embed"></iframe>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- =======================
-         CONTACTO (FORM + TARJETAS)
-         ======================= -->
-    <section class="section section--contact">
-      <div class="container contact">
-        <!-- Formulario -->
-        <div class="contact__form">
-          <h2 class="section__title">Contacto</h2>
-          <p class="contact__lead">
-            Con más de 30 años de experiencia, entendemos que estar a la vanguardia de la tecnología
-            nos permitirá prestar el mejor servicio.
-          </p>
-
-          <form class="form" action="#" method="post">
-            <label class="field">
-              <span class="field__label">Nombre y apellido</span>
-              <input class="field__input" type="text" name="name" placeholder="Nombre" />
-            </label>
-
-            <label class="field">
-              <span class="field__label">Email</span>
-              <input class="field__input" type="email" name="email" placeholder="Email" />
-              <span class="field__icon" aria-hidden="true">✳</span>
-            </label>
-
-            <label class="field">
-              <span class="field__label">Teléfono</span>
-              <input class="field__input" type="tel" name="phone" placeholder="Ej: 32124" />
-            </label>
-
-            <label class="field">
-              <span class="field__label">Mensaje</span>
-              <textarea class="field__textarea" name="message" rows="4" placeholder="Escriba su mensaje"></textarea>
-            </label>
-
-            <button class="btn" type="submit">Enviar</button>
-          </form>
-        </div>
-
-        <!-- Lado derecho (ilustración + tarjetas) -->
-        <div class="contact__right">
-          <div class="contact__art" role="img" aria-label="Ilustración"></div>
-
-          <div class="mini-branches" aria-label="Tarjetas de sedes">
-            <article class="mini-branch">
-              <h3 class="mini-branch__title">Sede Av Estación</h3>
-              <p class="mini-branch__line">✉ estacion@anillandocali.com</p>
-              <p class="mini-branch__line">☎ (602) 3989669</p>
-            </article>
-
-            <article class="mini-branch">
-              <h3 class="mini-branch__title">Sede Ermita</h3>
-              <p class="mini-branch__line">✉ ermita@anillandocali.com</p>
-              <p class="mini-branch__line">☎ (602) 3989669</p>
-            </article>
+      </section>
+      <section class="section section--contact">
+        <div class="container contact">
+          <div class="contact__form">
+            <h2 class="section__title">Contacto</h2>
+            <p class="contact__lead">Con más de 30 años de experiencia, entendemos que estar a la vanguardia de la tecnología nos permitirá prestar el mejor servicio.</p>
+            <form class="form" action="#" method="post">
+              <label class="field"><span class="field__label">Nombre y apellido</span>
+                <input class="field__input" type="text" name="name" placeholder="Nombre">
+              </label>
+              <label class="field"><span class="field__label">Email</span>
+                <input class="field__input" type="email" name="email" placeholder="Email"><span class="field__icon" aria-hidden="true">✳</span>
+              </label>
+              <label class="field"><span class="field__label">Teléfono</span>
+                <input class="field__input" type="tel" name="phone" placeholder="Ej: 32124">
+              </label>
+              <label class="field"><span class="field__label">Mensaje</span>
+                <textarea class="field__textarea" name="message" rows="4" placeholder="Escriba su mensaje"></textarea>
+              </label>
+              <button class="btn" type="submit">Enviar</button>
+            </form>
+          </div>
+          <div class="contact__right">
+            <div class="contact__art" role="img" aria-label="Ilustración"></div>
+            <div class="mini-branches" aria-label="Tarjetas de sedes">
+              <article class="mini-branch">
+                <h3 class="mini-branch__title">Sede Av Estación</h3>
+                <p class="mini-branch__line">✉ estacion@anillandocali.com</p>
+                <p class="mini-branch__line">☎ (602) 3989669</p>
+              </article>
+              <article class="mini-branch">
+                <h3 class="mini-branch__title">Sede Ermita</h3>
+                <p class="mini-branch__line">✉ ermita@anillandocali.com</p>
+                <p class="mini-branch__line">☎ (602) 3989669</p>
+              </article>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- =======================
-       FOOTER
-       ======================= -->
-  <footer class="site-footer">
-    <div class="container footer-top">
-      <div class="footer-col">
-        <h3 class="footer-title">Contacto</h3>
-        <ul class="footer-list">
-          <li><span class="muted">☎</span> (602) 398 9669</li>
-          <li><span class="muted">✉</span> contacto@anillandocali.com</li>
-        </ul>
-
-        <a class="whatsapp" href="#" aria-label="Abrir chat">
-          <span class="whatsapp__dot" aria-hidden="true">🟢</span>
-          Abrir chat
-        </a>
-
-        <div class="footer-social" aria-label="Redes sociales">
-          <a class="social" href="#" aria-label="Instagram">◎</a>
-          <a class="social" href="#" aria-label="Facebook">f</a>
-          <a class="social" href="#" aria-label="YouTube">▶</a>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <div class="footer-col">
+          <h3 class="footer-title">Contacto</h3>
+          <ul class="footer-list">
+            <li><span class="muted">☎</span> (602) 398 9669</li>
+            <li><span class="muted">✉</span> contacto@anillandocali.com</li>
+          </ul><a class="whatsapp" href="#" aria-label="Abrir chat"><span class="whatsapp__dot" aria-hidden="true">🟢</span>Abrir chat</a>
+          <div class="footer-social" aria-label="Redes sociales"><a class="social" href="#" aria-label="Instagram">◎</a><a class="social" href="#" aria-label="Facebook">f</a><a class="social" href="#" aria-label="YouTube">▶</a></div>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-title">Productos</h3>
+          <ul class="footer-list">
+            <li><a href="#">Foto producto</a></li>
+            <li><a href="#">Stickers &amp; Labels</a></li>
+            <li><a href="#">Papelería Boda</a></li>
+            <li><a href="#">Papelería Corporativa</a></li>
+            <li><a href="#">Material Marketing</a></li>
+            <li><a href="#">Señalización</a></li>
+            <li><a href="#">Cortes MDF</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-title">Ayuda</h3>
+          <ul class="footer-list">
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Problemas con el pago</a></li>
+            <li><a href="#">Políticas de privacidad</a></li>
+            <li><a href="#">Términos y condiciones</a></li>
+          </ul>
         </div>
       </div>
-
-      <div class="footer-col">
-        <h3 class="footer-title">Productos</h3>
-        <ul class="footer-list">
-          <li><a href="#">Foto producto</a></li>
-          <li><a href="#">Stickers &amp; Labels</a></li>
-          <li><a href="#">Papelería Boda</a></li>
-          <li><a href="#">Papelería Corporativa</a></li>
-          <li><a href="#">Material Marketing</a></li>
-          <li><a href="#">Señalización</a></li>
-          <li><a href="#">Cortes MDF</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <div class="container footer-bottom__row"><span class="muted">© 2026 - Maquetación Pug/CSS</span><span class="muted">Edita la página en <code>index.pug</code></span></div>
       </div>
-
-      <div class="footer-col">
-        <h3 class="footer-title">Ayuda</h3>
-        <ul class="footer-list">
-          <li><a href="#">Preguntas frecuentes</a></li>
-          <li><a href="#">Problemas con el pago</a></li>
-          <li><a href="#">Políticas de privacidad</a></li>
-          <li><a href="#">Términos y condiciones</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="container footer-bottom__row">
-        <span class="muted">© 2026 — Maquetación HTML/CSS</span>
-        <span class="muted">Edita estilos en <code>css/styles.css</code></span>
-      </div>
-    </div>
-  </footer>
-</body>
-
+    </footer>
+  </body>
 </html>
