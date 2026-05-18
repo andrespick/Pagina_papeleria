@@ -42,26 +42,18 @@ doctype html
 
   const branches = [
     {
-      name: "C.C. Holguines",
+      name: "Copyservices",
       className: "holguines",
-      address: "Local 134-133 Cra. 100 #11-60, Cali, Valle del Cauca",
-      phone: "(602) 398-9669",
-      email: "holguines@anillandocali.com",
-      schedule: "Lun a Vie 8:00 a 18:00hs",
-    },
-    {
-      name: "Av Estación",
-      className: "estacion",
-      address: "Av. Estación #5BN San Vicente, Cali, Valle del Cauca, Colombia",
-      phone: "(602) 398-9669",
-      email: "estacion@anillandocali.com",
-      schedule: "Lun a Vie 8:00 a 18:00hs",
-    },
+      category: "Internet cafe",
+      address: "Conjunto Residencial Alto Piamonte, Alto, Cali, Valle del Cauca",
+      plusCode: "9CMQ+5Q Cali, Valle del Cauca",
+      schedule: "Abierto · Cierra 8 PM",
+      mapQuery: "cid:3724333998245387144",
+    }
   ];
 
   const miniBranches = [
-    { name: "Sede Av Estación", email: "estacion@anillandocali.com", phone: "(602) 3989669" },
-    { name: "Sede Ermita", email: "ermita@anillandocali.com", phone: "(602) 3989669" },
+    { name: "Sede Copyservices", address: "Conjunto Residencial Alto Piamonte, Alto, Cali", schedule: "Abierto · Cierra 8 PM" },
   ];
 
   const footerProducts = [
@@ -87,6 +79,9 @@ mixin iconButton(label, text, extraClass)
     if extraClass === "icon-btn--cart"
       span.badge(aria-label="0 items") 0
 
+mixin simpleIcon(slug, label, extraClass)
+  img.simple-icon(class=extraClass src=`https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/${slug}.svg` width="20" height="20" alt=label loading="lazy")
+
 mixin sectionHeader(title, subtitle, row)
   header.section__header(class=row ? "section__header--row" : "")
     h2.section__title= title
@@ -111,19 +106,35 @@ mixin miniCard(item)
 
 mixin branchCard(branch)
   article.branch-card
-    div(class=`branch-card__photo branch-card__photo--${branch.className}` aria-hidden="true")
+    div(class=`branch-card__photo branch-card__photo--${branch.className}`)
+      img.branch-card__image(src="img/StreadView.jpg" alt=`Fachada de ${branch.name}`)
     .branch-card__content
       h3.branch-card__title= branch.name
+      if branch.category
+        p.branch-card__meta
+          strong Categoría:
+          |  #{branch.category}
       p.branch-card__text= branch.address
-      p.branch-card__meta
-        strong Teléfono:
-        |  #{branch.phone}
-      p.branch-card__meta
-        strong Correo:
-        |  #{branch.email}
+      if branch.plusCode
+        p.branch-card__meta
+          strong Plus code:
+          |  #{branch.plusCode}
+      if branch.phone
+        p.branch-card__meta
+          strong Teléfono:
+          |  #{branch.phone}
+      if branch.email
+        p.branch-card__meta
+          strong Correo:
+          |  #{branch.email}
       .branch-card__footer
         span.tag= branch.schedule
-        button.icon-chip(type="button" aria-label="Ubicación") ⌖
+        button.icon-chip(
+          type="button"
+          aria-label=`Ver ubicación de ${branch.name}`
+          data-map-query=branch.mapQuery || `${branch.name} ${branch.address}`
+          data-branch-name=branch.name
+        ) ⌖
 
 mixin footerLinks(title, links)
   .footer-col
@@ -145,26 +156,26 @@ html(lang="es")
       .container.header-row
         a.brand(href="#" aria-label="Inicio")
           span.brand__mark(aria-hidden="true")
-            svg(viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="Logo")
-              defs
-                linearGradient#g(x1="0" y1="0" x2="1" y2="1")
-                  stop(offset="0" stop-color="#0b6b7a")
-                  stop(offset="1" stop-color="#2aa6b8")
-              path(d="M24 4c11 0 20 9 20 20S35 44 24 44 4 35 4 24 13 4 24 4Z" fill="none" stroke="url(#g)" stroke-width="4")
-              path(d="M16 14c8 0 18 6 18 14" fill="none" stroke="#f09a2a" stroke-width="4" stroke-linecap="round")
+            img.brand__logo(src="Logos/logo_copyservices_exact.svg" alt="")
           span.brand__text
             span.brand__name CopyServices
             span.brand__tagline Donde tus ideas toman forma.
 
         nav.header-icons(aria-label="Acciones rápidas")
           +iconButton("Ayuda", "?")
-          +iconButton("Facebook", "f")
-          +iconButton("Instagram", "◎")
-          +iconButton("Carrito", "🛍", "icon-btn--cart")
+          a.icon-btn(href="#" aria-label="Facebook")
+            +simpleIcon("facebook", "Facebook")
+          a.icon-btn(href="#" aria-label="Instagram")
+            +simpleIcon("instagram", "Instagram")
+
+        button.nav-toggle(type="button" aria-label="Abrir navegación" aria-expanded="false" data-nav-toggle)
+          span.nav-toggle__bar
+          span.nav-toggle__bar
+          span.nav-toggle__bar
 
       .nav-strip
         .container
-          nav.main-nav(aria-label="Navegación principal")
+          nav.main-nav(aria-label="Navegación principal" data-main-nav)
             each item in navItems
               a.main-nav__link(href="#")
                 | #{item} 
@@ -217,13 +228,6 @@ html(lang="es")
 
           .branches
             aside.branches__left(aria-label="Listado de sedes")
-              .branches__controls
-                button.pill(type="button")
-                  | Presiona para ver más lugares 
-                  span(aria-hidden="true") ▾
-                button.pill.pill--icon(type="button" aria-label="Anterior") ‹
-                button.pill.pill--icon(type="button" aria-label="Siguiente") ›
-
               each branch in branches
                 +branchCard(branch)
 
@@ -232,7 +236,8 @@ html(lang="es")
                 title="Mapa - Sedes"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=Cali%20Valle%20del%20Cauca&output=embed"
+                src="https://www.google.com/maps?cid=3724333998245387144&output=embed"
+                data-map-frame
               )
 
       section.section.section--contact
@@ -241,7 +246,7 @@ html(lang="es")
             h2.section__title Contacto
             p.contact__lead Con más de 30 años de experiencia, entendemos que estar a la vanguardia de la tecnología nos permitirá prestar el mejor servicio.
 
-            form.form(action="#" method="post")
+            form.form(action="#" method="post" data-contact-form)
               label.field
                 span.field__label Nombre y apellido
                 input.field__input(type="text" name="name" placeholder="Nombre")
@@ -268,8 +273,8 @@ html(lang="es")
               each branch in miniBranches
                 article.mini-branch
                   h3.mini-branch__title= branch.name
-                  p.mini-branch__line ✉ #{branch.email}
-                  p.mini-branch__line ☎ #{branch.phone}
+                  p.mini-branch__line  #{branch.address}
+                  p.mini-branch__line  #{branch.schedule}
 
     footer.site-footer
       .container.footer-top
@@ -284,13 +289,14 @@ html(lang="es")
               |  contacto@anillandocali.com
 
           a.whatsapp(href="#" aria-label="Abrir chat")
-            span.whatsapp__dot(aria-hidden="true") 🟢
+            +simpleIcon("whatsapp", "WhatsApp", "whatsapp__icon")
             | Abrir chat
 
           .footer-social(aria-label="Redes sociales")
-            a.social(href="#" aria-label="Instagram") ◎
-            a.social(href="#" aria-label="Facebook") f
-            a.social(href="#" aria-label="YouTube") ▶
+            a.social(href="#" aria-label="Instagram")
+              +simpleIcon("instagram", "Instagram")
+            a.social(href="#" aria-label="Facebook")
+              +simpleIcon("facebook", "Facebook")
 
         +footerLinks("Productos", footerProducts)
         +footerLinks("Ayuda", footerHelp)
@@ -301,3 +307,5 @@ html(lang="es")
           span.muted
             | Edita la página en 
             code index.pug
+    .toast(role="status" aria-live="polite" data-toast)
+    script(src="js/main.js")

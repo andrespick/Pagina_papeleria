@@ -8,23 +8,14 @@
   </head>
   <body>
     <header class="site-header">
-      <div class="container header-row"><a class="brand" href="#" aria-label="Inicio"><span class="brand__mark" aria-hidden="true">
-            <svg viewBox="0 0 48 48" width="34" height="34" role="img" aria-label="Logo">
-              <defs>
-                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#0b6b7a"></stop>
-                  <stop offset="1" stop-color="#2aa6b8"></stop>
-                </linearGradient>
-              </defs>
-              <path d="M24 4c11 0 20 9 20 20S35 44 24 44 4 35 4 24 13 4 24 4Z" fill="none" stroke="url(#g)" stroke-width="4"></path>
-              <path d="M16 14c8 0 18 6 18 14" fill="none" stroke="#f09a2a" stroke-width="4" stroke-linecap="round"></path>
-            </svg></span><span class="brand__text"><span class="brand__name">CopyServices</span><span class="brand__tagline">Donde tus ideas toman forma.</span></span></a>
-        <nav class="header-icons" aria-label="Acciones rápidas"><a class="icon-btn" href="#" aria-label="Ayuda"><span class="icon">?</span></a><a class="icon-btn" href="#" aria-label="Facebook"><span class="icon">f</span></a><a class="icon-btn" href="#" aria-label="Instagram"><span class="icon">◎</span></a><a class="icon-btn icon-btn--cart" href="#" aria-label="Carrito"><span class="icon">🛍</span><span class="badge" aria-label="0 items">0</span></a>
+      <div class="container header-row"><a class="brand" href="#" aria-label="Inicio"><span class="brand__mark" aria-hidden="true"><img class="brand__logo" src="Logos/logo_copyservices_exact.svg" alt=""></span><span class="brand__text"><span class="brand__name">CopyServices</span><span class="brand__tagline">Donde tus ideas toman forma.</span></span></a>
+        <nav class="header-icons" aria-label="Acciones rápidas"><a class="icon-btn" href="#" aria-label="Ayuda"><span class="icon">?</span></a><a class="icon-btn" href="#" aria-label="Facebook"><img class="simple-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/facebook.svg" width="20" height="20" alt="Facebook" loading="lazy"></a><a class="icon-btn" href="#" aria-label="Instagram"><img class="simple-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/instagram.svg" width="20" height="20" alt="Instagram" loading="lazy"></a>
         </nav>
+        <button class="nav-toggle" type="button" aria-label="Abrir navegación" aria-expanded="false" data-nav-toggle><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span></button>
       </div>
       <div class="nav-strip">
         <div class="container">
-          <nav class="main-nav" aria-label="Navegación principal"><a class="main-nav__link" href="#">Gran formato <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Foto producto <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Stickers &amp; labels <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Papelería Fina <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Material marketing <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Papelería corporativa <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Otros servicios <span aria-hidden="true">▾</span></a>
+          <nav class="main-nav" aria-label="Navegación principal" data-main-nav><a class="main-nav__link" href="#">Gran formato <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Foto producto <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Stickers &amp; labels <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Papelería Fina <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Material marketing <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Papelería corporativa <span aria-hidden="true">▾</span></a><a class="main-nav__link" href="#">Otros servicios <span aria-hidden="true">▾</span></a>
           </nav>
         </div>
       </div>
@@ -143,38 +134,21 @@
           </header>
           <div class="branches">
             <aside class="branches__left" aria-label="Listado de sedes">
-              <div class="branches__controls">
-                <button class="pill" type="button">Presiona para ver más lugares <span aria-hidden="true">▾</span></button>
-                <button class="pill pill--icon" type="button" aria-label="Anterior">‹</button>
-                <button class="pill pill--icon" type="button" aria-label="Siguiente">›</button>
-              </div>
               <article class="branch-card">
-                <div class="branch-card__photo branch-card__photo--holguines" aria-hidden="true"></div>
+                <div class="branch-card__photo branch-card__photo--holguines"><img class="branch-card__image" src="img/StreadView.jpg" alt="Fachada de Copyservices"></div>
                 <div class="branch-card__content">
-                  <h3 class="branch-card__title">C.C. Holguines</h3>
-                  <p class="branch-card__text">Local 134-133 Cra. 100 #11-60, Cali, Valle del Cauca</p>
-                  <p class="branch-card__meta"><strong>Teléfono:</strong> (602) 398-9669</p>
-                  <p class="branch-card__meta"><strong>Correo:</strong> holguines@anillandocali.com</p>
-                  <div class="branch-card__footer"><span class="tag">Lun a Vie 8:00 a 18:00hs</span>
-                    <button class="icon-chip" type="button" aria-label="Ubicación">⌖</button>
-                  </div>
-                </div>
-              </article>
-              <article class="branch-card">
-                <div class="branch-card__photo branch-card__photo--estacion" aria-hidden="true"></div>
-                <div class="branch-card__content">
-                  <h3 class="branch-card__title">Av Estación</h3>
-                  <p class="branch-card__text">Av. Estación #5BN San Vicente, Cali, Valle del Cauca, Colombia</p>
-                  <p class="branch-card__meta"><strong>Teléfono:</strong> (602) 398-9669</p>
-                  <p class="branch-card__meta"><strong>Correo:</strong> estacion@anillandocali.com</p>
-                  <div class="branch-card__footer"><span class="tag">Lun a Vie 8:00 a 18:00hs</span>
-                    <button class="icon-chip" type="button" aria-label="Ubicación">⌖</button>
+                  <h3 class="branch-card__title">Copyservices</h3>
+                  <p class="branch-card__meta"><strong>Categoría:</strong> Internet cafe</p>
+                  <p class="branch-card__text">Conjunto Residencial Alto Piamonte, Alto, Cali, Valle del Cauca</p>
+                  <p class="branch-card__meta"><strong>Plus code:</strong> 9CMQ+5Q Cali, Valle del Cauca</p>
+                  <div class="branch-card__footer"><span class="tag">Abierto · Cierra 8 PM</span>
+                    <button class="icon-chip" type="button" aria-label="Ver ubicación de Copyservices" data-map-query="cid:3724333998245387144" data-branch-name="Copyservices">⌖</button>
                   </div>
                 </div>
               </article>
             </aside>
             <div class="branches__map" aria-label="Mapa">
-              <iframe title="Mapa - Sedes" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Cali%20Valle%20del%20Cauca&amp;output=embed"></iframe>
+              <iframe title="Mapa - Sedes" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?cid=3724333998245387144&amp;output=embed" data-map-frame></iframe>
             </div>
           </div>
         </div>
@@ -184,7 +158,7 @@
           <div class="contact__form">
             <h2 class="section__title">Contacto</h2>
             <p class="contact__lead">Con más de 30 años de experiencia, entendemos que estar a la vanguardia de la tecnología nos permitirá prestar el mejor servicio.</p>
-            <form class="form" action="#" method="post">
+            <form class="form" action="#" method="post" data-contact-form>
               <label class="field"><span class="field__label">Nombre y apellido</span>
                 <input class="field__input" type="text" name="name" placeholder="Nombre">
               </label>
@@ -204,14 +178,9 @@
             <div class="contact__art" role="img" aria-label="Ilustración"></div>
             <div class="mini-branches" aria-label="Tarjetas de sedes">
               <article class="mini-branch">
-                <h3 class="mini-branch__title">Sede Av Estación</h3>
-                <p class="mini-branch__line">✉ estacion@anillandocali.com</p>
-                <p class="mini-branch__line">☎ (602) 3989669</p>
-              </article>
-              <article class="mini-branch">
-                <h3 class="mini-branch__title">Sede Ermita</h3>
-                <p class="mini-branch__line">✉ ermita@anillandocali.com</p>
-                <p class="mini-branch__line">☎ (602) 3989669</p>
+                <h3 class="mini-branch__title">Sede Copyservices</h3>
+                <p class="mini-branch__line"> Conjunto Residencial Alto Piamonte, Alto, Cali</p>
+                <p class="mini-branch__line"> Abierto · Cierra 8 PM</p>
               </article>
             </div>
           </div>
@@ -225,8 +194,8 @@
           <ul class="footer-list">
             <li><span class="muted">☎</span> (602) 398 9669</li>
             <li><span class="muted">✉</span> contacto@anillandocali.com</li>
-          </ul><a class="whatsapp" href="#" aria-label="Abrir chat"><span class="whatsapp__dot" aria-hidden="true">🟢</span>Abrir chat</a>
-          <div class="footer-social" aria-label="Redes sociales"><a class="social" href="#" aria-label="Instagram">◎</a><a class="social" href="#" aria-label="Facebook">f</a><a class="social" href="#" aria-label="YouTube">▶</a></div>
+          </ul><a class="whatsapp" href="#" aria-label="Abrir chat"><img class="simple-icon whatsapp__icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/whatsapp.svg" width="20" height="20" alt="WhatsApp" loading="lazy">Abrir chat</a>
+          <div class="footer-social" aria-label="Redes sociales"><a class="social" href="#" aria-label="Instagram"><img class="simple-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/instagram.svg" width="20" height="20" alt="Instagram" loading="lazy"></a><a class="social" href="#" aria-label="Facebook"><img class="simple-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/facebook.svg" width="20" height="20" alt="Facebook" loading="lazy"></a></div>
         </div>
         <div class="footer-col">
           <h3 class="footer-title">Productos</h3>
@@ -254,5 +223,7 @@
         <div class="container footer-bottom__row"><span class="muted">© 2026 - Maquetación Pug/CSS</span><span class="muted">Edita la página en <code>index.pug</code></span></div>
       </div>
     </footer>
+    <div class="toast" role="status" aria-live="polite" data-toast></div>
+    <script src="js/main.js"></script>
   </body>
 </html>
