@@ -6,8 +6,6 @@ const carouselPrev = document.querySelector("[data-carousel-prev]");
 const carouselNext = document.querySelector("[data-carousel-next]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const mainNav = document.querySelector("[data-main-nav]");
-const branchButtons = document.querySelectorAll("[data-map-query]");
-const mapFrame = document.querySelector("[data-map-frame]");
 const toast = document.querySelector("[data-toast]");
 
 let carouselIndex = 0;
@@ -70,20 +68,6 @@ carousel?.addEventListener("focusout", startCarousel);
 navToggle?.addEventListener("click", () => {
   const isOpen = mainNav.classList.toggle("main-nav--open");
   navToggle.setAttribute("aria-expanded", String(isOpen));
-});
-
-branchButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const query = button.dataset.mapQuery;
-    if (!query || !mapFrame) return;
-
-    const source = query.startsWith("cid:")
-      ? `https://www.google.com/maps?cid=${encodeURIComponent(query.replace("cid:", ""))}&output=embed`
-      : `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
-
-    mapFrame.src = source;
-    showToast(`Mapa actualizado: ${button.dataset.branchName}.`);
-  });
 });
 
 startCarousel();

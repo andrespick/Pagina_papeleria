@@ -11,48 +11,44 @@ doctype html
   ];
 
   const services = [
-    { title: "Gran formato", className: "gran-formato" },
-    { title: "Foto producto", className: "foto-producto" },
-    { title: "Stickers & Labels", className: "stickers" },
-    { title: "Papelería Boda", className: "boda" },
-    { title: "Material Marketing", className: "marketing" },
-    { title: "Papelería Corporativa", className: "corporativa" },
+    { title: "Gran formato", className: "gran-formato", icon: "▣" },
+    { title: "Foto producto", className: "foto-producto", icon: "◉" },
+    { title: "Stickers & Labels", className: "stickers", icon: "◒" },
+    { title: "Papelería Boda", className: "boda", icon: "♡" },
+    { title: "Material Marketing", className: "marketing", icon: "◁" },
+    { title: "Papelería Corporativa", className: "corporativa", icon: "▤" },
   ];
 
   const otherServicePages = [
     [
-      { title: "Calendario pared", className: "calendar" },
-      { title: "Reglamentos", className: "rules" },
-      { title: "Quemada de CD", className: "cd-burn" },
-      { title: "Impresión de CD", className: "cd-print" },
+      { title: "Calendario pared", className: "calendar", icon: "▦" },
+      { title: "Reglamentos", className: "rules", icon: "▤" },
+      { title: "Quemada de CD", className: "cd-burn", icon: "◉" },
+      { title: "Impresión de CD", className: "cd-print", icon: "◎" },
     ],
     [
-      { title: "Menú", className: "menu" },
-      { title: "Hablador de mesa", className: "table" },
-      { title: "Carnets", className: "id" },
-      { title: "Corte láser", className: "laser" },
+      { title: "Menú", className: "menu", icon: "≡" },
+      { title: "Hablador de mesa", className: "table", icon: "▱" },
+      { title: "Carnets", className: "id", icon: "▭" },
+      { title: "Corte láser", className: "laser", icon: "⌁" },
     ],
     [
-      { title: "Señalización", className: "signage" },
-      { title: "Cortes MDF", className: "mdf" },
-      { title: "Impresión foto", className: "photo" },
-      { title: "Otro servicio", className: "other" },
+      { title: "Señalización", className: "signage", icon: "!" },
+      { title: "Impresión foto", className: "photo", icon: "◌" },
+      { title: "Otro servicio", className: "other", icon: "+" },
     ],
   ];
 
-  const branches = [
-    {
-      name: "Copyservices",
-      className: "holguines",
-      category: "Internet cafe",
-      address: "Conjunto Residencial Alto Piamonte, Alto, Cali, Valle del Cauca",
-      plusCode: "9CMQ+5Q Cali, Valle del Cauca",
-      phone: "+57 320 2878530",
-      email: "copyservices.co@gmail.com",
-      schedule: "Abierto · Cierra 8 PM",
-      mapQuery: "cid:3724333998245387144",
-    }
-  ];
+  const branch = {
+    name: "Copyservices",
+    category: "Internet cafe",
+    address: "Conjunto Residencial Alto Piamonte, Alto, Cali, Valle del Cauca",
+    plusCode: "9CMQ+5Q Cali, Valle del Cauca",
+    phone: "+57 320 2878530",
+    email: "copyservices.co@gmail.com",
+    schedule: "Abierto · Cierra 8 PM",
+    mapQuery: "cid:3724333998245387144",
+  };
 
   const footerProducts = [
     "Foto producto",
@@ -61,7 +57,6 @@ doctype html
     "Papelería Corporativa",
     "Material Marketing",
     "Señalización",
-    "Cortes MDF",
   ];
 
   const footerHelp = [
@@ -70,12 +65,6 @@ doctype html
     "Políticas de privacidad",
     "Términos y condiciones",
   ];
-
-mixin iconButton(label, text, extraClass)
-  a.icon-btn(class=extraClass href="#" aria-label=label)
-    span.icon= text
-    if extraClass === "icon-btn--cart"
-      span.badge(aria-label="0 items") 0
 
 mixin simpleIcon(slug, label, extraClass)
   img.simple-icon(class=extraClass src=`https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/${slug}.svg` width="20" height="20" alt=label loading="lazy")
@@ -92,47 +81,49 @@ mixin sectionHeader(title, subtitle, row)
 mixin serviceCard(service)
   article.service-card(class=`service-card--${service.className}`)
     .service-card__overlay
-      h3.service-card__title= service.title
-      a.btn.btn--small(href="#") Ver más
+      span.service-card__icon(aria-hidden="true")= service.icon
+      .service-card__bottom
+        h3.service-card__title= service.title
+        a.btn.btn--small(href="#")
+          | Ver más
+          span(aria-hidden="true") →
 
 mixin miniCard(item)
   a.mini-card(href="#" tabindex="0")
     div(class=`mini-card__img mini-card__img--${item.className}`)
+      span.mini-card__icon(aria-hidden="true")= item.icon
     .mini-card__body
       span.mini-card__title= item.title
       span.mini-card__arrow(aria-hidden="true") →
 
 mixin branchCard(branch)
   article.branch-card
-    div(class=`branch-card__photo branch-card__photo--${branch.className}`)
+    .branch-card__photo
       img.branch-card__image(src="img/StreadView.jpg" alt=`Fachada de ${branch.name}`)
     .branch-card__content
       h3.branch-card__title= branch.name
-      if branch.category
-        p.branch-card__meta
-          strong Categoría:
-          |  #{branch.category}
+      p.branch-card__meta
+        strong Categoría:
+        |  #{branch.category}
       p.branch-card__text= branch.address
-      if branch.plusCode
-        p.branch-card__meta
-          strong Plus code:
-          |  #{branch.plusCode}
-      if branch.phone
-        p.branch-card__meta
-          strong Teléfono:
-          |  #{branch.phone}
-      if branch.email
-        p.branch-card__meta
-          strong Correo:
-          |  #{branch.email}
+      p.branch-card__meta
+        strong Plus code:
+        |  #{branch.plusCode}
+      p.branch-card__meta
+        strong Teléfono:
+        |  #{branch.phone}
+      p.branch-card__meta
+        strong Correo:
+        |  #{branch.email}
       .branch-card__footer
         span.tag= branch.schedule
-        button.icon-chip(
-          type="button"
-          aria-label=`Ver ubicación de ${branch.name}`
-          data-map-query=branch.mapQuery || `${branch.name} ${branch.address}`
-          data-branch-name=branch.name
-        ) ⌖
+      a.branch-card__maps(
+        href="https://www.google.com/maps?cid=3724333998245387144"
+        target="_blank"
+        rel="noopener noreferrer"
+      )
+        | Abrir en Google Maps
+        span(aria-hidden="true") ↗
 
 mixin footerLinks(title, links)
   .footer-col
@@ -150,127 +141,134 @@ html(lang="es")
     link(rel="stylesheet" href="css/styles.css")
 
   body
-    header.site-header
-      .container.header-row
-        a.brand(href="#" aria-label="Inicio")
-          span.brand__mark(aria-hidden="true")
-            img.brand__logo(src="Logos/logo_copyservices_exact.svg" alt="")
-          span.brand__text
-            span.brand__name CopyServices
-            span.brand__tagline Donde tus ideas toman forma.
+    .page-shell
+      header.site-header
+        .container.header-row
+          a.brand(href="#" aria-label="Inicio")
+            span.brand__mark(aria-hidden="true")
+              img.brand__logo(src="Logos/logo_copyservices_exact.svg" alt="")
+            span.brand__text
+              span.brand__name CopyServices
+              span.brand__tagline Donde tus ideas toman forma.
 
-        nav.header-icons(aria-label="Acciones rápidas")
-          +iconButton("Ayuda", "?")
-          a.icon-btn(
-            href="https://www.facebook.com/p/Copyservices-100086411343836"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-          )
-            +simpleIcon("facebook", "Facebook")
-          a.icon-btn(href="#" aria-label="Instagram")
-            +simpleIcon("instagram", "Instagram")
-
-        button.nav-toggle(type="button" aria-label="Abrir navegación" aria-expanded="false" data-nav-toggle)
-          span.nav-toggle__bar
-          span.nav-toggle__bar
-          span.nav-toggle__bar
-
-      .nav-strip
-        .container
-          nav.main-nav(aria-label="Navegación principal" data-main-nav)
-            each item in navItems
-              a.main-nav__link(href="#")
-                | #{item} 
-                span(aria-hidden="true") ▾
-
-    section.hero(aria-label="Hero")
-      .container.hero-grid
-        .hero-shot.hero-shot--left(role="img" aria-label="Mockup cuaderno anillado")
-        .hero-shot.hero-shot--right(role="img" aria-label="Mockup libro / catálogo")
-
-    main
-      section.section
-        .container
-          +sectionHeader("Nuestros servicios")
-          .service-grid
-            each service in services
-              +serviceCard(service)
-
-      section.section.section--soft
-        .container
-          +sectionHeader("Otros servicios", "Soluciones rápidas para impresión, papelería y acabados especiales.", true)
-
-          .carousel(aria-label="Carrusel de otros servicios" data-carousel)
-            button.carousel__control.carousel__control--prev(type="button" aria-label="Servicio anterior" data-carousel-prev) ‹
-            button.carousel__control.carousel__control--next(type="button" aria-label="Servicio siguiente" data-carousel-next) ›
-
-            .carousel__viewport
-              .carousel__track(data-carousel-track)
-                each page in otherServicePages
-                  .carousel__page(data-carousel-page)
-                    each item in page
-                      +miniCard(item)
-
-            .carousel__dots(aria-label="Paginación" data-carousel-dots)
-              each page, index in otherServicePages
-                button.dot(
-                  type="button"
-                  aria-label=`Página ${index + 1}`
-                  aria-current=index === 0 ? "true" : "false"
-                  data-carousel-dot=index
-                )
-
-      section.section
-        .container
-          +sectionHeader("Nuestra sede", "¡Visita nuestra sede estratégicamente ubicada!")
-
-          .branches
-            aside.branches__left(aria-label="Listado de sedes")
-              each branch in branches
-                +branchCard(branch)
-
-            .branches__map(aria-label="Mapa")
-              iframe(
-                title="Mapa - Sedes"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?cid=3724333998245387144&output=embed"
-                data-map-frame
-              )
-
-    footer.site-footer
-      .container.footer-top
-        .footer-col
-          h3.footer-title Contacto
-          ul.footer-list
-            li
-              span.muted ☎
-              |  +57 320 2878530
-            li
-              span.muted ✉
-              |  copyservices.co@gmail.com
-
-          .footer-social(aria-label="Redes sociales")
-            a.social(href="#" aria-label="Instagram")
-              +simpleIcon("instagram", "Instagram")
-            a.social(
+          nav.header-icons(aria-label="Acciones rápidas")
+            a.icon-btn(href="#" aria-label="Ayuda")
+              span.icon ?
+            a.icon-btn(
               href="https://www.facebook.com/p/Copyservices-100086411343836"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
             )
               +simpleIcon("facebook", "Facebook")
+            a.icon-btn(href="#" aria-label="Instagram")
+              +simpleIcon("instagram", "Instagram")
 
-        +footerLinks("Productos", footerProducts)
-        +footerLinks("Ayuda", footerHelp)
+          button.nav-toggle(type="button" aria-label="Abrir navegación" aria-expanded="false" data-nav-toggle)
+            span.nav-toggle__bar
+            span.nav-toggle__bar
+            span.nav-toggle__bar
 
-      .footer-bottom
-        .container.footer-bottom__row
-          span.muted © 2026 - Maquetación Pug/CSS
-          span.muted
-            | Edita la página en 
-            code index.pug
+        .nav-strip
+          .container
+            nav.main-nav(aria-label="Navegación principal" data-main-nav)
+              each item in navItems
+                a.main-nav__link(href="#")
+                  | #{item} 
+                  span(aria-hidden="true") ▾
+
+      section.hero(aria-label="Hero")
+        .container
+          .hero-panel(role="img" aria-label="Servicios de impresión CopyServices")
+            .hero-panel__printer
+            .hero-panel__stationery
+            .hero-panel__dots(aria-hidden="true")
+              span.is-active
+              span
+              span
+
+      main
+        section.section.section--services
+          .container
+            +sectionHeader("Nuestros servicios")
+            .service-grid
+              each service in services
+                +serviceCard(service)
+
+        section.section.section--soft
+          .container
+            +sectionHeader("Otros servicios", "Soluciones rápidas para impresión, papelería y acabados especiales.", true)
+
+            .carousel(aria-label="Carrusel de otros servicios" data-carousel)
+              button.carousel__control.carousel__control--prev(type="button" aria-label="Servicio anterior" data-carousel-prev) ‹
+              button.carousel__control.carousel__control--next(type="button" aria-label="Servicio siguiente" data-carousel-next) ›
+
+              .carousel__viewport
+                .carousel__track(data-carousel-track)
+                  each page in otherServicePages
+                    .carousel__page(data-carousel-page)
+                      each item in page
+                        +miniCard(item)
+
+              .carousel__dots(aria-label="Paginación" data-carousel-dots)
+                each page, index in otherServicePages
+                  button.dot(
+                    type="button"
+                    aria-label=`Página ${index + 1}`
+                    aria-current=index === 0 ? "true" : "false"
+                    data-carousel-dot=index
+                  )
+
+        section.section.section--branch
+          .container
+            +sectionHeader("Nuestra sede", "¡Visita nuestra sede estratégicamente ubicada!")
+
+            .branches
+              aside.branches__left(aria-label="Sede principal")
+                +branchCard(branch)
+
+              .branches__map(aria-label="Mapa")
+                iframe(
+                  title="Mapa - Sede Copyservices"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps?cid=3724333998245387144&output=embed"
+                  data-map-frame
+                )
+
+      footer.site-footer
+        .container.footer-top
+          .footer-col
+            h3.footer-title Contacto
+            ul.footer-list
+              li
+                span.muted ☎
+                |  +57 320 2878530
+              li
+                span.muted ✉
+                |  copyservices.co@gmail.com
+
+            .footer-social(aria-label="Redes sociales")
+              a.social(href="#" aria-label="Instagram")
+                +simpleIcon("instagram", "Instagram")
+              a.social(
+                href="https://www.facebook.com/p/Copyservices-100086411343836"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              )
+                +simpleIcon("facebook", "Facebook")
+
+          +footerLinks("Productos", footerProducts)
+          +footerLinks("Ayuda", footerHelp)
+
+        .footer-bottom
+          .container.footer-bottom__row
+            span.muted © 2026 - Maquetación Pug/CSS
+            span.muted
+              | Edita la página en 
+              code index.pug
+
     a.whatsapp-float(
       href="https://wa.me/573202878530"
       target="_blank"
