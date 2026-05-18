@@ -1,13 +1,16 @@
-const carouselRadios = Array.from(document.querySelectorAll(".carousel__radio"));
-const carousel = document.querySelector(".carousel");
+const carousel = document.querySelector("[data-carousel]");
+const carouselTrack = document.querySelector("[data-carousel-track]");
+const carouselPages = Array.from(document.querySelectorAll("[data-carousel-page]"));
+const carouselDots = Array.from(document.querySelectorAll("[data-carousel-dot]"));
+const carouselPrev = document.querySelector("[data-carousel-prev]");
+const carouselNext = document.querySelector("[data-carousel-next]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const mainNav = document.querySelector("[data-main-nav]");
 const branchButtons = document.querySelectorAll("[data-map-query]");
 const mapFrame = document.querySelector("[data-map-frame]");
-const contactForm = document.querySelector("[data-contact-form]");
 const toast = document.querySelector("[data-toast]");
 
-let carouselIndex = carouselRadios.findIndex((radio) => radio.checked);
+let carouselIndex = 0;
 let carouselTimer;
 
 function showToast(message) {
@@ -23,14 +26,18 @@ function showToast(message) {
 }
 
 function goToSlide(index) {
-  if (!carouselRadios.length) return;
+  if (!carouselTrack || !carouselPages.length) return;
 
-  carouselIndex = (index + carouselRadios.length) % carouselRadios.length;
-  carouselRadios[carouselIndex].checked = true;
+  carouselIndex = (index + carouselPages.length) % carouselPages.length;
+  carouselTrack.style.setProperty("--carousel-index", carouselIndex);
+
+  carouselDots.forEach((dot, dotIndex) => {
+    dot.setAttribute("aria-current", String(dotIndex === carouselIndex));
+  });
 }
 
 function startCarousel() {
-  if (!carouselRadios.length) return;
+  if (!carouselPages.length) return;
 
   window.clearInterval(carouselTimer);
   carouselTimer = window.setInterval(() => {
@@ -38,11 +45,21 @@ function startCarousel() {
   }, 5000);
 }
 
-carouselRadios.forEach((radio, index) => {
-  radio.addEventListener("change", () => {
-    carouselIndex = index;
+carouselDots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    goToSlide(index);
     startCarousel();
   });
+});
+
+carouselPrev?.addEventListener("click", () => {
+  goToSlide(carouselIndex - 1);
+  startCarousel();
+});
+
+carouselNext?.addEventListener("click", () => {
+  goToSlide(carouselIndex + 1);
+  startCarousel();
 });
 
 carousel?.addEventListener("mouseenter", () => window.clearInterval(carouselTimer));
@@ -67,23 +84,6 @@ branchButtons.forEach((button) => {
     mapFrame.src = source;
     showToast(`Mapa actualizado: ${button.dataset.branchName}.`);
   });
-});
-
-contactForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const formData = new FormData(contactForm);
-  const name = String(formData.get("name") || "").trim();
-  const email = String(formData.get("email") || "").trim();
-  const message = String(formData.get("message") || "").trim();
-
-  if (!name || !email || !message) {
-    showToast("Completa nombre, email y mensaje para enviar la solicitud.");
-    return;
-  }
-
-  contactForm.reset();
-  showToast("Mensaje listo. Te contactaremos pronto.");
 });
 
 startCarousel();

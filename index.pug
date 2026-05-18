@@ -47,13 +47,11 @@ doctype html
       category: "Internet cafe",
       address: "Conjunto Residencial Alto Piamonte, Alto, Cali, Valle del Cauca",
       plusCode: "9CMQ+5Q Cali, Valle del Cauca",
+      phone: "+57 320 2878530",
+      email: "copyservices.co@gmail.com",
       schedule: "Abierto · Cierra 8 PM",
       mapQuery: "cid:3724333998245387144",
     }
-  ];
-
-  const miniBranches = [
-    { name: "Sede Copyservices", address: "Conjunto Residencial Alto Piamonte, Alto, Cali", schedule: "Abierto · Cierra 8 PM" },
   ];
 
   const footerProducts = [
@@ -98,7 +96,7 @@ mixin serviceCard(service)
       a.btn.btn--small(href="#") Ver más
 
 mixin miniCard(item)
-  a.mini-card(href="#")
+  a.mini-card(href="#" tabindex="0")
     div(class=`mini-card__img mini-card__img--${item.className}`)
     .mini-card__body
       span.mini-card__title= item.title
@@ -163,7 +161,12 @@ html(lang="es")
 
         nav.header-icons(aria-label="Acciones rápidas")
           +iconButton("Ayuda", "?")
-          a.icon-btn(href="#" aria-label="Facebook")
+          a.icon-btn(
+            href="https://www.facebook.com/p/Copyservices-100086411343836"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          )
             +simpleIcon("facebook", "Facebook")
           a.icon-btn(href="#" aria-label="Instagram")
             +simpleIcon("instagram", "Instagram")
@@ -196,35 +199,31 @@ html(lang="es")
 
       section.section.section--soft
         .container
-          +sectionHeader("Otros servicios", "Carrusel sin JavaScript (CSS + radio buttons). Reemplaza/añade tarjetas fácilmente.", true)
+          +sectionHeader("Otros servicios", "Soluciones rápidas para impresión, papelería y acabados especiales.", true)
 
-          .carousel(aria-label="Carrusel de otros servicios")
-            input#s1.carousel__radio(type="radio" name="slides" checked)
-            input#s2.carousel__radio(type="radio" name="slides")
-            input#s3.carousel__radio(type="radio" name="slides")
+          .carousel(aria-label="Carrusel de otros servicios" data-carousel)
+            button.carousel__control.carousel__control--prev(type="button" aria-label="Servicio anterior" data-carousel-prev) ‹
+            button.carousel__control.carousel__control--next(type="button" aria-label="Servicio siguiente" data-carousel-next) ›
 
             .carousel__viewport
-              .carousel__track
+              .carousel__track(data-carousel-track)
                 each page in otherServicePages
-                  .carousel__page
+                  .carousel__page(data-carousel-page)
                     each item in page
                       +miniCard(item)
 
-            .carousel__arrows(aria-hidden="true")
-              label.carousel__arrow.carousel__arrow--prev(for="s1") ‹
-              label.carousel__arrow.carousel__arrow--next(for="s2") ›
-              label.carousel__arrow.carousel__arrow--prev.carousel__arrow--p2(for="s1") ‹
-              label.carousel__arrow.carousel__arrow--next.carousel__arrow--p2(for="s3") ›
-              label.carousel__arrow.carousel__arrow--prev.carousel__arrow--p3(for="s2") ‹
-              label.carousel__arrow.carousel__arrow--next.carousel__arrow--p3(for="s3") ›
-
-            .carousel__dots(aria-label="Paginación")
+            .carousel__dots(aria-label="Paginación" data-carousel-dots)
               each page, index in otherServicePages
-                label.dot(for=`s${index + 1}` aria-label=`Página ${index + 1}`)
+                button.dot(
+                  type="button"
+                  aria-label=`Página ${index + 1}`
+                  aria-current=index === 0 ? "true" : "false"
+                  data-carousel-dot=index
+                )
 
       section.section
         .container
-          +sectionHeader("Nuestras sedes", "¡Visita nuestras sedes estratégicamente ubicadas!")
+          +sectionHeader("Nuestra sede", "¡Visita nuestra sede estratégicamente ubicada!")
 
           .branches
             aside.branches__left(aria-label="Listado de sedes")
@@ -240,42 +239,6 @@ html(lang="es")
                 data-map-frame
               )
 
-      section.section.section--contact
-        .container.contact
-          .contact__form
-            h2.section__title Contacto
-            p.contact__lead Con más de 30 años de experiencia, entendemos que estar a la vanguardia de la tecnología nos permitirá prestar el mejor servicio.
-
-            form.form(action="#" method="post" data-contact-form)
-              label.field
-                span.field__label Nombre y apellido
-                input.field__input(type="text" name="name" placeholder="Nombre")
-
-              label.field
-                span.field__label Email
-                input.field__input(type="email" name="email" placeholder="Email")
-                span.field__icon(aria-hidden="true") ✳
-
-              label.field
-                span.field__label Teléfono
-                input.field__input(type="tel" name="phone" placeholder="Ej: 32124")
-
-              label.field
-                span.field__label Mensaje
-                textarea.field__textarea(name="message" rows="4" placeholder="Escriba su mensaje")
-
-              button.btn(type="submit") Enviar
-
-          .contact__right
-            .contact__art(role="img" aria-label="Ilustración")
-
-            .mini-branches(aria-label="Tarjetas de sedes")
-              each branch in miniBranches
-                article.mini-branch
-                  h3.mini-branch__title= branch.name
-                  p.mini-branch__line  #{branch.address}
-                  p.mini-branch__line  #{branch.schedule}
-
     footer.site-footer
       .container.footer-top
         .footer-col
@@ -283,19 +246,20 @@ html(lang="es")
           ul.footer-list
             li
               span.muted ☎
-              |  (602) 398 9669
+              |  +57 320 2878530
             li
               span.muted ✉
-              |  contacto@anillandocali.com
-
-          a.whatsapp(href="#" aria-label="Abrir chat")
-            +simpleIcon("whatsapp", "WhatsApp", "whatsapp__icon")
-            | Abrir chat
+              |  copyservices.co@gmail.com
 
           .footer-social(aria-label="Redes sociales")
             a.social(href="#" aria-label="Instagram")
               +simpleIcon("instagram", "Instagram")
-            a.social(href="#" aria-label="Facebook")
+            a.social(
+              href="https://www.facebook.com/p/Copyservices-100086411343836"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            )
               +simpleIcon("facebook", "Facebook")
 
         +footerLinks("Productos", footerProducts)
@@ -307,5 +271,12 @@ html(lang="es")
           span.muted
             | Edita la página en 
             code index.pug
+    a.whatsapp-float(
+      href="https://wa.me/573202878530"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Abrir chat de WhatsApp"
+    )
+      +simpleIcon("whatsapp", "WhatsApp", "whatsapp-float__icon")
     .toast(role="status" aria-live="polite" data-toast)
     script(src="js/main.js")
