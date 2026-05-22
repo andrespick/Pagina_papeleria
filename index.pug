@@ -1,69 +1,99 @@
 doctype html
 -
+  const whatsappBase = "https://wa.me/573202878530";
+  const whatsapp = (message) => `${whatsappBase}?text=${encodeURIComponent(message)}`;
+
   const navItems = [
-    "Gran formato",
-    "Foto producto",
-    "Stickers & labels",
-    "Papelería Fina",
-    "Material marketing",
-    "Papelería corporativa",
-    "Otros servicios",
+    { label: "Servicios", href: "#servicios" },
+    { label: "Papelería y oficina", href: "#papeleria-oficina" },
+    { label: "Trámites", href: "#tramites" },
+    { label: "Puntored", href: "#puntored" },
+    { label: "Productos", href: "#productos" },
+    { label: "Sede", href: "#sede" },
   ];
 
-  const services = [
-    { title: "Gran formato", className: "gran-formato", icon: "▣" },
-    { title: "Foto producto", className: "foto-producto", icon: "◉" },
-    { title: "Stickers & Labels", className: "stickers", icon: "◒" },
-    { title: "Papelería Boda", className: "boda", icon: "♡" },
-    { title: "Material Marketing", className: "marketing", icon: "◁" },
-    { title: "Papelería Corporativa", className: "corporativa", icon: "▤" },
+  const serviceGroups = [
+    {
+      id: "papeleria-oficina",
+      title: "Servicios de papelería y oficina",
+      className: "office",
+      icon: "PO",
+      summary: "Copias, impresiones, trabajos en computador y acabados para documentos.",
+      message: "Hola, quiero consultar un servicio de papelería u oficina.",
+      items: [
+        "Fotocopias a color y blanco y negro.",
+        "Impresiones láser a color y blanco y negro.",
+        "Trabajos en computador.",
+        "Transcripción y redacción de textos.",
+        "Anillado.",
+        "Laminado al calor desde tamaño cédula hasta oficio.",
+        "Escáner.",
+        "Guillotina de papel.",
+      ],
+    },
+    {
+      id: "tramites",
+      title: "Servicios de trámites",
+      className: "process",
+      icon: "TR",
+      summary: "Apoyo para certificados, recibos, radicaciones y gestiones virtuales.",
+      message: "Hola, quiero consultar un trámite virtual.",
+      items: [
+        "Expedición de recibos de pago de estampillas municipales y departamentales.",
+        "Expedición de certificados de tradición.",
+        "Radicación de PQRS ante la Alcaldía y otras entidades públicas.",
+        "Certificados de antecedentes judiciales, Contraloría y Procuraduría.",
+        "Trámites virtuales diversos.",
+      ],
+    },
+    {
+      id: "puntored",
+      title: "Servicios Puntored",
+      className: "puntored",
+      icon: "PR",
+      summary: "Pagos, recargas, movimientos bancarios, giros y servicios digitales.",
+      intro: "Con el servicio Puntored te ofrecemos:",
+      message: "Hola, quiero consultar un servicio Puntored.",
+      items: [
+        "Recargas a celular.",
+        "Pago de servicios públicos y privados en más de 15.000 convenios.",
+        "Retiros y depósitos bancarios: Davivienda, Colpatria, Grupo Aval.",
+        "Depósitos y retiros en billeteras móviles: Daviplata, Nequi.",
+        "Apuestas deportivas.",
+        "Recargas a Netflix, DirecTV y cuentas de videojuegos.",
+        "Giros por Western Union.",
+      ],
+    },
   ];
 
-  const otherServicePages = [
-    [
-      { title: "Calendario pared", className: "calendar", icon: "▦" },
-      { title: "Reglamentos", className: "rules", icon: "▤" },
-      { title: "Quemada de CD", className: "cd-burn", icon: "◉" },
-      { title: "Impresión de CD", className: "cd-print", icon: "◎" },
-    ],
-    [
-      { title: "Menú", className: "menu", icon: "≡" },
-      { title: "Hablador de mesa", className: "table", icon: "▱" },
-      { title: "Carnets", className: "id", icon: "▭" },
-      { title: "Corte láser", className: "laser", icon: "⌁" },
-    ],
-    [
-      { title: "Señalización", className: "signage", icon: "!" },
-      { title: "Impresión foto", className: "photo", icon: "◌" },
-      { title: "Otro servicio", className: "other", icon: "+" },
-    ],
+  const products = [
+    {
+      id: "botones-publicitarios",
+      title: "Botones publicitarios",
+      className: "buttons",
+      message: "Hola, quiero consultar botones publicitarios.",
+      text: "Escríbenos para consultar disponibilidad, cantidades y tiempos de entrega.",
+    },
   ];
 
   const branch = {
     name: "Copyservices",
-    category: "Internet cafe",
+    category: "Papelería, trámites y servicios digitales",
     address: "Conjunto Residencial Alto Piamonte, Alto, Cali, Valle del Cauca",
     plusCode: "9CMQ+5Q Cali, Valle del Cauca",
     phone: "+57 320 2878530",
     email: "copyservices.co@gmail.com",
-    schedule: "Abierto · Cierra 8 PM",
-    mapQuery: "cid:3724333998245387144",
+    schedule: "Abierto - Cierra 8 PM",
   };
 
-  const footerProducts = [
-    "Foto producto",
-    "Stickers & Labels",
-    "Papelería Boda",
-    "Papelería Corporativa",
-    "Material Marketing",
-    "Señalización",
+  const footerServices = [
+    { label: "Papelería y oficina", href: "#papeleria-oficina" },
+    { label: "Trámites", href: "#tramites" },
+    { label: "Puntored", href: "#puntored" },
   ];
 
-  const footerHelp = [
-    "Preguntas frecuentes",
-    "Problemas con el pago",
-    "Políticas de privacidad",
-    "Términos y condiciones",
+  const footerProducts = [
+    { label: "Botones publicitarios", href: "#botones-publicitarios" },
   ];
 
 mixin simpleIcon(slug, label, extraClass)
@@ -78,23 +108,40 @@ mixin sectionHeader(title, subtitle, row)
       else
         p.section__subtitle= subtitle
 
-mixin serviceCard(service)
-  article.service-card(class=`service-card--${service.className}`)
-    .service-card__overlay
-      span.service-card__icon(aria-hidden="true")= service.icon
-      .service-card__bottom
-        h3.service-card__title= service.title
-        a.btn.btn--small(href="#")
-          | Ver más
-          span(aria-hidden="true") →
+mixin serviceDetailCard(group)
+  article.detail-card(id=group.id class=`detail-card--${group.className}`)
+    .detail-card__top
+      span.detail-card__marker(aria-hidden="true")= group.icon
+      .detail-card__heading
+        h3.detail-card__title= group.title
+        p.detail-card__summary= group.summary
+    if group.intro
+      p.detail-card__intro= group.intro
+    ul.detail-list
+      each item in group.items
+        li= item
+    a.detail-card__action(
+      href=whatsapp(group.message)
+      target="_blank"
+      rel="noopener noreferrer"
+    )
+      | Consultar por WhatsApp
+      span(aria-hidden="true") →
 
-mixin miniCard(item)
-  a.mini-card(href="#" tabindex="0")
-    div(class=`mini-card__img mini-card__img--${item.className}`)
-      span.mini-card__icon(aria-hidden="true")= item.icon
-    .mini-card__body
-      span.mini-card__title= item.title
-      span.mini-card__arrow(aria-hidden="true") →
+mixin productCard(product)
+  article.product-card(id=product.id class=`product-card--${product.className}`)
+    .product-card__media(aria-hidden="true")
+      span.product-card__icon BP
+    .product-card__content
+      h3.product-card__title= product.title
+      p.product-card__text= product.text
+      a.product-card__action(
+        href=whatsapp(product.message)
+        target="_blank"
+        rel="noopener noreferrer"
+      )
+        | Cotizar por WhatsApp
+        span(aria-hidden="true") →
 
 mixin branchCard(branch)
   article.branch-card
@@ -131,20 +178,20 @@ mixin footerLinks(title, links)
     ul.footer-list
       each link in links
         li
-          a(href="#")= link
+          a(href=link.href)= link.label
 
 html(lang="es")
   head
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
-    title CopyServices - Home
+    title CopyServices - Papelería, trámites y Puntored
     link(rel="stylesheet" href="css/styles.css")
 
   body
-    .page-shell
+    .page-shell#inicio
       header.site-header
         .container.header-row
-          a.brand(href="#" aria-label="Inicio")
+          a.brand(href="#inicio" aria-label="Inicio")
             span.brand__mark(aria-hidden="true")
               img.brand__logo(src="Logos/logo_copyservices_exact.svg" alt="")
             span.brand__text
@@ -152,7 +199,7 @@ html(lang="es")
               span.brand__tagline Donde tus ideas toman forma.
 
           nav.header-icons(aria-label="Acciones rápidas")
-            a.icon-btn(href="#" aria-label="Ayuda")
+            a.icon-btn(href="#contacto" aria-label="Contacto")
               span.icon ?
             a.icon-btn(
               href="https://www.facebook.com/p/Copyservices-100086411343836"
@@ -161,8 +208,13 @@ html(lang="es")
               aria-label="Facebook"
             )
               +simpleIcon("facebook", "Facebook")
-            a.icon-btn(href="#" aria-label="Instagram")
-              +simpleIcon("instagram", "Instagram")
+            a.icon-btn(
+              href=whatsapp("Hola, quiero información sobre CopyServices.")
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            )
+              +simpleIcon("whatsapp", "WhatsApp")
 
           button.nav-toggle(type="button" aria-label="Abrir navegación" aria-expanded="false" data-nav-toggle)
             span.nav-toggle__bar
@@ -173,13 +225,11 @@ html(lang="es")
           .container
             nav.main-nav(aria-label="Navegación principal" data-main-nav)
               each item in navItems
-                a.main-nav__link(href="#")
-                  | #{item} 
-                  span(aria-hidden="true") ▾
+                a.main-nav__link(href=item.href)= item.label
 
-      section.hero(aria-label="Hero")
+      section.hero(aria-label="Servicios CopyServices")
         .container
-          .hero-panel(role="img" aria-label="Servicios de impresión CopyServices")
+          .hero-panel(role="img" aria-label="Papelería, trámites y servicios digitales CopyServices")
             .hero-panel__printer
             .hero-panel__stationery
             .hero-panel__dots(aria-hidden="true")
@@ -188,40 +238,23 @@ html(lang="es")
               span
 
       main
-        section.section.section--services
+        section.section.section--services#servicios
           .container
-            +sectionHeader("Nuestros servicios")
-            .service-grid
-              each service in services
-                +serviceCard(service)
+            +sectionHeader("Servicios", "Papelería, oficina, trámites y Puntored en un solo lugar.")
+            .service-list-grid
+              each group in serviceGroups
+                +serviceDetailCard(group)
 
-        section.section.section--soft
+        section.section.section--soft#productos
           .container
-            +sectionHeader("Otros servicios", "Soluciones rápidas para impresión, papelería y acabados especiales.", true)
+            +sectionHeader("Productos", "Producto disponible para publicidad, eventos y promoción de marca.", true)
+            .product-grid
+              each product in products
+                +productCard(product)
 
-            .carousel(aria-label="Carrusel de otros servicios" data-carousel)
-              button.carousel__control.carousel__control--prev(type="button" aria-label="Servicio anterior" data-carousel-prev) ‹
-              button.carousel__control.carousel__control--next(type="button" aria-label="Servicio siguiente" data-carousel-next) ›
-
-              .carousel__viewport
-                .carousel__track(data-carousel-track)
-                  each page in otherServicePages
-                    .carousel__page(data-carousel-page)
-                      each item in page
-                        +miniCard(item)
-
-              .carousel__dots(aria-label="Paginación" data-carousel-dots)
-                each page, index in otherServicePages
-                  button.dot(
-                    type="button"
-                    aria-label=`Página ${index + 1}`
-                    aria-current=index === 0 ? "true" : "false"
-                    data-carousel-dot=index
-                  )
-
-        section.section.section--branch
+        section.section.section--branch#sede
           .container
-            +sectionHeader("Nuestra sede", "¡Visita nuestra sede estratégicamente ubicada!")
+            +sectionHeader("Nuestra sede", "Visita nuestra sede estratégicamente ubicada.")
 
             .branches
               aside.branches__left(aria-label="Sede principal")
@@ -236,21 +269,28 @@ html(lang="es")
                   data-map-frame
                 )
 
-      footer.site-footer
+      footer.site-footer#contacto
         .container.footer-top
           .footer-col
             h3.footer-title Contacto
             ul.footer-list
               li
-                span.muted ☎
+                span.muted WhatsApp:
                 |  +57 320 2878530
               li
-                span.muted ✉
+                span.muted Correo:
                 |  copyservices.co@gmail.com
+              li
+                a(href="https://www.google.com/maps?cid=3724333998245387144" target="_blank" rel="noopener noreferrer") Ver ubicación en Google Maps
 
-            .footer-social(aria-label="Redes sociales")
-              a.social(href="#" aria-label="Instagram")
-                +simpleIcon("instagram", "Instagram")
+            .footer-social(aria-label="Redes sociales y contacto")
+              a.social(
+                href=whatsapp("Hola, quiero información sobre CopyServices.")
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+              )
+                +simpleIcon("whatsapp", "WhatsApp")
               a.social(
                 href="https://www.facebook.com/p/Copyservices-100086411343836"
                 target="_blank"
@@ -259,22 +299,19 @@ html(lang="es")
               )
                 +simpleIcon("facebook", "Facebook")
 
+          +footerLinks("Servicios", footerServices)
           +footerLinks("Productos", footerProducts)
-          +footerLinks("Ayuda", footerHelp)
 
         .footer-bottom
           .container.footer-bottom__row
-            span.muted © 2026 - Maquetación Pug/CSS
-            span.muted
-              | Edita la página en 
-              code index.pug
+            span.muted © 2026 CopyServices
+            span.muted Papelería, trámites y Puntored en Cali
 
     a.whatsapp-float(
-      href="https://wa.me/573202878530"
+      href=whatsapp("Hola, quiero información sobre CopyServices.")
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Abrir chat de WhatsApp"
     )
       +simpleIcon("whatsapp", "WhatsApp", "whatsapp-float__icon")
-    .toast(role="status" aria-live="polite" data-toast)
     script(src="js/main.js")
