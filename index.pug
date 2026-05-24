@@ -50,7 +50,7 @@ doctype html
       id: "puntored",
       title: "Servicios Puntored",
       className: "puntored",
-      iconSrc: "Img/PuntoRed.png",
+      iconSrc: "img/PuntoRed.png",
       summary: "Pagos, recargas, movimientos bancarios, giros y servicios digitales.",
       intro: "Con el servicio Puntored te ofrecemos:",
       message: "Hola, quiero consultar un servicio Puntored.",
@@ -71,8 +71,28 @@ doctype html
       id: "botones-publicitarios",
       title: "Botones publicitarios",
       className: "buttons",
+      image: "img/BotonPublicitario.webp",
+      imageAlt: "Botones publicitarios personalizados",
       message: "Hola, quiero consultar botones publicitarios.",
-      text: "Escríbenos para consultar disponibilidad, cantidades y tiempos de entrega.",
+      text: "Botones personalizados para publicidad, eventos y promoción de marca.",
+    },
+    {
+      id: "camisetas-estampadas",
+      title: "Camisetas estampadas",
+      className: "shirts",
+      image: "img/camisetasEstampadas.jpg",
+      imageAlt: "Camisetas estampadas personalizadas",
+      message: "Hola, quiero consultar camisetas estampadas.",
+      text: "Estampados personalizados para camisetas, diseños promocionales y detalles especiales.",
+    },
+    {
+      id: "mugs-personalizados",
+      title: "Mugs personalizados",
+      className: "mugs",
+      image: "img/mugs-personalizado.jpg",
+      imageAlt: "Mugs personalizados",
+      message: "Hola, quiero consultar mugs personalizados.",
+      text: "Personalización de vasos de café y mugs para regalos, marca o eventos.",
     },
   ];
 
@@ -93,6 +113,8 @@ doctype html
 
   const footerProducts = [
     { label: "Botones publicitarios", href: "#botones-publicitarios" },
+    { label: "Camisetas estampadas", href: "#camisetas-estampadas" },
+    { label: "Mugs personalizados", href: "#mugs-personalizados" },
   ];
 
 mixin simpleIcon(slug, label, extraClass)
@@ -131,8 +153,8 @@ mixin serviceDetailSection(group)
 
 mixin productCard(product)
   article.product-card(id=product.id class=`product-card--${product.className}`)
-    .product-card__media(aria-hidden="true")
-      span.product-card__icon BP
+    .product-card__media
+      img.product-card__image(src=product.image alt=product.imageAlt loading="lazy" decoding="async")
     .product-card__content
       h3.product-card__title= product.title
       p.product-card__text= product.text
@@ -183,6 +205,7 @@ html(lang="es")
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     title CopyServices - Papelería, trámites y Puntored
+    link(rel="icon" type="image/svg+xml" href="img/logos/LOGO%20FONDO%20BLANCO.svg")
     link(rel="stylesheet" href="css/styles.css")
 
   body
@@ -191,14 +214,12 @@ html(lang="es")
         .container.header-row
           a.brand(href="#inicio" aria-label="Inicio")
             span.brand__mark(aria-hidden="true")
-              img.brand__logo(src="Logos/LOGO FONDO BLANCO.svg" alt="")
+              img.brand__logo(src="img/logos/LOGO%20FONDO%20BLANCO.svg" alt="")
             span.brand__text
               span.brand__name CopyServices
               span.brand__tagline Donde tus ideas toman forma.
 
           nav.header-icons(aria-label="Acciones rápidas")
-            a.icon-btn(href="#contacto" aria-label="Contacto")
-              span.icon ?
             a.icon-btn(
               href="https://www.facebook.com/p/Copyservices-100086411343836"
               target="_blank"
@@ -229,7 +250,7 @@ html(lang="es")
         .container
           .hero-panel
             img.hero-panel__image(
-              src="Img/Banner%20Hero2.png"
+              src="img/Banner%20Hero2.png"
               alt="Banner de servicios CopyServices"
               decoding="async"
               fetchpriority="high"
@@ -245,7 +266,7 @@ html(lang="es")
 
         section.section.section--soft#productos
           .container
-            +sectionHeader("Productos", "Producto disponible para publicidad, eventos y promoción de marca.", true)
+            +sectionHeader("Productos", "Personalización para publicidad, regalos, eventos y promoción de marca.", true)
             .product-grid
               each product in products
                 +productCard(product)

@@ -83,10 +83,9 @@ Deja esa terminal abierta mientras editas. Luego recarga el navegador.
 │   └── styles.css     # Estilos responsive mobile-first
 ├── js/
 │   └── main.js        # Interacciones: menu movil, carrusel, toast
-├── Img/
-│   └── StreadView.jpg # Imagen usada en la tarjeta de sede
-├── Logos/
-│   └── logo_copyservices_exact.svg
+├── img/
+│   ├── StreadView.jpg # Imagen usada en la tarjeta de sede
+│   └── logos/         # Logos e icono de pagina
 ├── Desktop.png        # Mockup de referencia desktop
 └── mobile.png         # Mockup de referencia mobile
 ```

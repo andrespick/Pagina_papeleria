@@ -352,7 +352,6 @@ button{ font: inherit; }
 .product-card{
   --product-accent: #f28a18;
   display: grid;
-  gap: 16px;
   align-items: stretch;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -361,25 +360,15 @@ button{ font: inherit; }
   box-shadow: var(--shadow-soft);
 }
 .product-card__media{
-  min-height: 138px;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(circle at 70% 24%, rgba(255,255,255,.48), transparent 24%),
-    linear-gradient(135deg, #0b7280, #102334 58%, #f28a18);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #e5e7eb;
 }
-.product-card__icon{
-  width: 72px;
-  height: 72px;
-  display: grid;
-  place-items: center;
-  border: 2px solid rgba(255,255,255,.76);
-  border-radius: 999px;
-  background: rgba(255,255,255,.16);
-  color: #fff;
-  font-size: 20px;
-  font-weight: 900;
-  box-shadow: 0 16px 28px rgba(15,23,42,.20);
+.product-card__image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .product-card__content{
   display: flex;
@@ -399,6 +388,15 @@ button{ font: inherit; }
   margin: 0;
   color: #475569;
   font-size: 15px;
+}
+.product-card--buttons .product-card__image{
+  object-position: center 48%;
+}
+.product-card--shirts .product-card__image{
+  object-position: center top;
+}
+.product-card--mugs .product-card__image{
+  object-position: center;
 }
 
 .branches{
@@ -570,15 +568,6 @@ button{ font: inherit; }
   height: 31px;
   filter: invert(1);
 }
-@media (min-width: 560px){
-  .product-card{
-    grid-template-columns: minmax(180px, .42fr) 1fr;
-  }
-  .product-card__media{
-    min-height: 100%;
-  }
-}
-
 @media (min-width: 860px){
   .page-shell{
     width: 100%;
@@ -672,6 +661,15 @@ button{ font: inherit; }
   }
   .section__hint{
     text-align: right;
+  }
+  .product-grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .product-card__content{
+    padding: 20px;
+  }
+  .product-card__title{
+    font-size: 24px;
   }
   .branches{
     grid-template-columns: minmax(320px, 420px) 1fr;
