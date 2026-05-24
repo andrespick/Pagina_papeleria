@@ -21,3 +21,6 @@ build/
 Thumbs.db
 .vscode/
 .idea/
+
+# Local agent instructions
+AGENT.MD

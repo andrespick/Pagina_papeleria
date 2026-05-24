@@ -17,7 +17,7 @@ doctype html
       id: "papeleria-oficina",
       title: "Servicios de papelería y oficina",
       className: "office",
-      icon: "PO",
+      iconSrc: "https://unpkg.com/@tabler/icons@3.37.1/icons/outline/notebook.svg",
       summary: "Copias, impresiones, trabajos en computador y acabados para documentos.",
       message: "Hola, quiero consultar un servicio de papelería u oficina.",
       items: [
@@ -35,7 +35,7 @@ doctype html
       id: "tramites",
       title: "Servicios de trámites",
       className: "process",
-      icon: "TR",
+      iconSrc: "https://unpkg.com/@tabler/icons@3.37.1/icons/outline/certificate.svg",
       summary: "Apoyo para certificados, recibos, radicaciones y gestiones virtuales.",
       message: "Hola, quiero consultar un trámite virtual.",
       items: [
@@ -50,7 +50,7 @@ doctype html
       id: "puntored",
       title: "Servicios Puntored",
       className: "puntored",
-      icon: "PR",
+      iconSrc: "Img/PuntoRed.png",
       summary: "Pagos, recargas, movimientos bancarios, giros y servicios digitales.",
       intro: "Con el servicio Puntored te ofrecemos:",
       message: "Hola, quiero consultar un servicio Puntored.",
@@ -80,7 +80,6 @@ doctype html
     name: "Copyservices",
     category: "Papelería, trámites y servicios digitales",
     address: "Conjunto Residencial Alto Piamonte, Alto, Cali, Valle del Cauca",
-    plusCode: "9CMQ+5Q Cali, Valle del Cauca",
     phone: "+57 320 2878530",
     email: "copyservices.co@gmail.com",
     schedule: "Abierto - Cierra 8 PM",
@@ -108,25 +107,27 @@ mixin sectionHeader(title, subtitle, row)
       else
         p.section__subtitle= subtitle
 
-mixin serviceDetailCard(group)
-  article.detail-card(id=group.id class=`detail-card--${group.className}`)
-    .detail-card__top
-      span.detail-card__marker(aria-hidden="true")= group.icon
-      .detail-card__heading
-        h3.detail-card__title= group.title
-        p.detail-card__summary= group.summary
-    if group.intro
-      p.detail-card__intro= group.intro
-    ul.detail-list
-      each item in group.items
-        li= item
-    a.detail-card__action(
-      href=whatsapp(group.message)
-      target="_blank"
-      rel="noopener noreferrer"
-    )
-      | Consultar por WhatsApp
-      span(aria-hidden="true") →
+mixin serviceDetailSection(group)
+  section.section.service-section(id=group.id class=`service-section--${group.className}`)
+    .container
+      .service-detail(class=`service-detail--${group.className}`)
+        span.service-detail__marker(aria-hidden="true")
+          img.service-detail__icon(src=group.iconSrc alt="" loading="lazy" decoding="async")
+        .service-detail__content
+          h3.service-detail__title= group.title
+          p.service-detail__summary= group.summary
+          if group.intro
+            p.service-detail__intro= group.intro
+          ul.detail-list
+            each item in group.items
+              li= item
+          a.service-detail__action(
+            href=whatsapp(group.message)
+            target="_blank"
+            rel="noopener noreferrer"
+          )
+            | Consultar por WhatsApp
+            span(aria-hidden="true") →
 
 mixin productCard(product)
   article.product-card(id=product.id class=`product-card--${product.className}`)
@@ -153,9 +154,6 @@ mixin branchCard(branch)
         strong Categoría:
         |  #{branch.category}
       p.branch-card__text= branch.address
-      p.branch-card__meta
-        strong Plus code:
-        |  #{branch.plusCode}
       p.branch-card__meta
         strong Teléfono:
         |  #{branch.phone}
@@ -193,7 +191,7 @@ html(lang="es")
         .container.header-row
           a.brand(href="#inicio" aria-label="Inicio")
             span.brand__mark(aria-hidden="true")
-              img.brand__logo(src="Logos/logo_copyservices_exact.svg" alt="")
+              img.brand__logo(src="Logos/LOGO FONDO BLANCO.svg" alt="")
             span.brand__text
               span.brand__name CopyServices
               span.brand__tagline Donde tus ideas toman forma.
@@ -229,21 +227,21 @@ html(lang="es")
 
       section.hero(aria-label="Servicios CopyServices")
         .container
-          .hero-panel(role="img" aria-label="Papelería, trámites y servicios digitales CopyServices")
-            .hero-panel__printer
-            .hero-panel__stationery
-            .hero-panel__dots(aria-hidden="true")
-              span.is-active
-              span
-              span
+          .hero-panel
+            img.hero-panel__image(
+              src="Img/Banner%20Hero2.png"
+              alt="Banner de servicios CopyServices"
+              decoding="async"
+              fetchpriority="high"
+            )
 
       main
         section.section.section--services#servicios
           .container
             +sectionHeader("Servicios", "Papelería, oficina, trámites y Puntored en un solo lugar.")
-            .service-list-grid
-              each group in serviceGroups
-                +serviceDetailCard(group)
+
+        each group in serviceGroups
+          +serviceDetailSection(group)
 
         section.section.section--soft#productos
           .container

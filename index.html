@@ -9,7 +9,7 @@
   <body>
     <div class="page-shell" id="inicio">
       <header class="site-header">
-        <div class="container header-row"><a class="brand" href="#inicio" aria-label="Inicio"><span class="brand__mark" aria-hidden="true"><img class="brand__logo" src="Logos/logo_copyservices_exact.svg" alt=""></span><span class="brand__text"><span class="brand__name">CopyServices</span><span class="brand__tagline">Donde tus ideas toman forma.</span></span></a>
+        <div class="container header-row"><a class="brand" href="#inicio" aria-label="Inicio"><span class="brand__mark" aria-hidden="true"><img class="brand__logo" src="Logos/LOGO FONDO BLANCO.svg" alt=""></span><span class="brand__text"><span class="brand__name">CopyServices</span><span class="brand__tagline">Donde tus ideas toman forma.</span></span></a>
           <nav class="header-icons" aria-label="Acciones rápidas"><a class="icon-btn" href="#contacto" aria-label="Contacto"><span class="icon">?</span></a><a class="icon-btn" href="https://www.facebook.com/p/Copyservices-100086411343836" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img class="simple-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/facebook.svg" width="20" height="20" alt="Facebook" loading="lazy"></a><a class="icon-btn" href="https://wa.me/573202878530?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20CopyServices." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><img class="simple-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/whatsapp.svg" width="20" height="20" alt="WhatsApp" loading="lazy"></a></nav>
           <button class="nav-toggle" type="button" aria-label="Abrir navegación" aria-expanded="false" data-nav-toggle><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span></button>
         </div>
@@ -22,11 +22,7 @@
       </header>
       <section class="hero" aria-label="Servicios CopyServices">
         <div class="container">
-          <div class="hero-panel" role="img" aria-label="Papelería, trámites y servicios digitales CopyServices">
-            <div class="hero-panel__printer"></div>
-            <div class="hero-panel__stationery"></div>
-            <div class="hero-panel__dots" aria-hidden="true"><span class="is-active"></span><span></span><span></span></div>
-          </div>
+          <div class="hero-panel"><img class="hero-panel__image" src="Img/Banner%20Hero2.png" alt="Banner de servicios CopyServices" decoding="async" fetchpriority="high"></div>
         </div>
       </section>
       <main>
@@ -36,14 +32,14 @@
               <h2 class="section__title">Servicios</h2>
               <p class="section__subtitle">Papelería, oficina, trámites y Puntored en un solo lugar.</p>
             </header>
-            <div class="service-list-grid">
-              <article class="detail-card detail-card--office" id="papeleria-oficina">
-                <div class="detail-card__top"><span class="detail-card__marker" aria-hidden="true">PO</span>
-                  <div class="detail-card__heading">
-                    <h3 class="detail-card__title">Servicios de papelería y oficina</h3>
-                    <p class="detail-card__summary">Copias, impresiones, trabajos en computador y acabados para documentos.</p>
-                  </div>
-                </div>
+          </div>
+        </section>
+        <section class="section service-section service-section--office" id="papeleria-oficina">
+          <div class="container">
+            <div class="service-detail service-detail--office"><span class="service-detail__marker" aria-hidden="true"><img class="service-detail__icon" src="https://unpkg.com/@tabler/icons@3.37.1/icons/outline/notebook.svg" alt="" loading="lazy" decoding="async"></span>
+              <div class="service-detail__content">
+                <h3 class="service-detail__title">Servicios de papelería y oficina</h3>
+                <p class="service-detail__summary">Copias, impresiones, trabajos en computador y acabados para documentos.</p>
                 <ul class="detail-list">
                   <li>Fotocopias a color y blanco y negro.</li>
                   <li>Impresiones láser a color y blanco y negro.</li>
@@ -53,31 +49,35 @@
                   <li>Laminado al calor desde tamaño cédula hasta oficio.</li>
                   <li>Escáner.</li>
                   <li>Guillotina de papel.</li>
-                </ul><a class="detail-card__action" href="https://wa.me/573202878530?text=Hola%2C%20quiero%20consultar%20un%20servicio%20de%20papeler%C3%ADa%20u%20oficina." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp<span aria-hidden="true">→</span></a>
-              </article>
-              <article class="detail-card detail-card--process" id="tramites">
-                <div class="detail-card__top"><span class="detail-card__marker" aria-hidden="true">TR</span>
-                  <div class="detail-card__heading">
-                    <h3 class="detail-card__title">Servicios de trámites</h3>
-                    <p class="detail-card__summary">Apoyo para certificados, recibos, radicaciones y gestiones virtuales.</p>
-                  </div>
-                </div>
+                </ul><a class="service-detail__action" href="https://wa.me/573202878530?text=Hola%2C%20quiero%20consultar%20un%20servicio%20de%20papeler%C3%ADa%20u%20oficina." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp<span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section service-section service-section--process" id="tramites">
+          <div class="container">
+            <div class="service-detail service-detail--process"><span class="service-detail__marker" aria-hidden="true"><img class="service-detail__icon" src="https://unpkg.com/@tabler/icons@3.37.1/icons/outline/certificate.svg" alt="" loading="lazy" decoding="async"></span>
+              <div class="service-detail__content">
+                <h3 class="service-detail__title">Servicios de trámites</h3>
+                <p class="service-detail__summary">Apoyo para certificados, recibos, radicaciones y gestiones virtuales.</p>
                 <ul class="detail-list">
                   <li>Expedición de recibos de pago de estampillas municipales y departamentales.</li>
                   <li>Expedición de certificados de tradición.</li>
                   <li>Radicación de PQRS ante la Alcaldía y otras entidades públicas.</li>
                   <li>Certificados de antecedentes judiciales, Contraloría y Procuraduría.</li>
                   <li>Trámites virtuales diversos.</li>
-                </ul><a class="detail-card__action" href="https://wa.me/573202878530?text=Hola%2C%20quiero%20consultar%20un%20tr%C3%A1mite%20virtual." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp<span aria-hidden="true">→</span></a>
-              </article>
-              <article class="detail-card detail-card--puntored" id="puntored">
-                <div class="detail-card__top"><span class="detail-card__marker" aria-hidden="true">PR</span>
-                  <div class="detail-card__heading">
-                    <h3 class="detail-card__title">Servicios Puntored</h3>
-                    <p class="detail-card__summary">Pagos, recargas, movimientos bancarios, giros y servicios digitales.</p>
-                  </div>
-                </div>
-                <p class="detail-card__intro">Con el servicio Puntored te ofrecemos:</p>
+                </ul><a class="service-detail__action" href="https://wa.me/573202878530?text=Hola%2C%20quiero%20consultar%20un%20tr%C3%A1mite%20virtual." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp<span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section service-section service-section--puntored" id="puntored">
+          <div class="container">
+            <div class="service-detail service-detail--puntored"><span class="service-detail__marker" aria-hidden="true"><img class="service-detail__icon" src="Img/PuntoRed.png" alt="" loading="lazy" decoding="async"></span>
+              <div class="service-detail__content">
+                <h3 class="service-detail__title">Servicios Puntored</h3>
+                <p class="service-detail__summary">Pagos, recargas, movimientos bancarios, giros y servicios digitales.</p>
+                <p class="service-detail__intro">Con el servicio Puntored te ofrecemos:</p>
                 <ul class="detail-list">
                   <li>Recargas a celular.</li>
                   <li>Pago de servicios públicos y privados en más de 15.000 convenios.</li>
@@ -86,8 +86,8 @@
                   <li>Apuestas deportivas.</li>
                   <li>Recargas a Netflix, DirecTV y cuentas de videojuegos.</li>
                   <li>Giros por Western Union.</li>
-                </ul><a class="detail-card__action" href="https://wa.me/573202878530?text=Hola%2C%20quiero%20consultar%20un%20servicio%20Puntored." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp<span aria-hidden="true">→</span></a>
-              </article>
+                </ul><a class="service-detail__action" href="https://wa.me/573202878530?text=Hola%2C%20quiero%20consultar%20un%20servicio%20Puntored." target="_blank" rel="noopener noreferrer">Consultar por WhatsApp<span aria-hidden="true">→</span></a>
+              </div>
             </div>
           </div>
         </section>
@@ -122,7 +122,6 @@
                     <h3 class="branch-card__title">Copyservices</h3>
                     <p class="branch-card__meta"><strong>Categoría:</strong> Papelería, trámites y servicios digitales</p>
                     <p class="branch-card__text">Conjunto Residencial Alto Piamonte, Alto, Cali, Valle del Cauca</p>
-                    <p class="branch-card__meta"><strong>Plus code:</strong> 9CMQ+5Q Cali, Valle del Cauca</p>
                     <p class="branch-card__meta"><strong>Teléfono:</strong> +57 320 2878530</p>
                     <p class="branch-card__meta"><strong>Correo:</strong> copyservices.co@gmail.com</p>
                     <div class="branch-card__footer"><span class="tag">Abierto - Cierra 8 PM</span></div><a class="branch-card__maps" href="https://www.google.com/maps?cid=3724333998245387144" target="_blank" rel="noopener noreferrer">Abrir en Google Maps<span aria-hidden="true">↗</span></a>
