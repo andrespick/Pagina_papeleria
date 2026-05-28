@@ -1,6 +1,6 @@
 # CopyServices Landing Page
 
-Landing page responsive para CopyServices, una papeleria y punto de servicios en Cali. El proyecto usa Node.js, Express y Pug para renderizar la pagina desde datos reutilizables, y tambien puede generar un `index.html` estatico para publicar en hosting simple.
+Landing page responsive para CopyServices, una papeleria y punto de servicios en Cali. El proyecto usa Node.js, Express y Pug para renderizar la pagina desde datos reutilizables. Tambien puede generar un `index.html` estatico para publicar en un hosting simple.
 
 ## Tecnologias
 
@@ -70,13 +70,12 @@ npm.cmd run watch
 
 ```text
 .
-|-- data/
-|   `-- site.js        # Servicios, productos, sede, contacto y helpers
-|-- docs/
-|   `-- presentacion.md
 |-- css/
 |   `-- styles.css
+|-- data/
+|   `-- site.js
 |-- img/
+|   |-- Banner Hero1.webp
 |   |-- Banner Hero2.png
 |   |-- BotonPublicitario.webp
 |   |-- PuntoRed.png
@@ -84,14 +83,29 @@ npm.cmd run watch
 |   |-- camisetasEstampadas.jpg
 |   |-- mugs-personalizado.jpg
 |   `-- logos/
+|       |-- LOGO FONDO BLANCO.svg
+|       `-- logo_copyservices_exact.svg
 |-- js/
 |   `-- main.js
-|-- build.js          # Compila Pug a HTML estatico
-|-- index.html        # HTML generado
-|-- index.pug         # Plantilla principal
+|-- .gitignore
+|-- AGENT.MD
+|-- build.js
+|-- index.html
+|-- index.pug
+|-- package-lock.json
 |-- package.json
-`-- server.js         # Servidor Express + Pug
+|-- README.md
+`-- server.js
 ```
+
+## Archivos Principales
+
+- `server.js`: levanta Express, sirve assets estaticos y renderiza `index.pug`.
+- `data/site.js`: contiene servicios, productos, sede, contacto, redes y helper de WhatsApp.
+- `index.pug`: plantilla principal de la landing.
+- `build.js`: compila `index.pug` a `index.html` usando los mismos datos de `data/site.js`.
+- `css/styles.css`: estilos responsive del sitio.
+- `js/main.js`: interacciones del menu movil.
 
 ## Funcionalidades Actuales
 
@@ -122,15 +136,13 @@ Facebook: https://www.facebook.com/p/Copyservices-100086411343836
 WhatsApp: https://wa.me/573202878530
 ```
 
-## Presentacion
+## Guia Breve de Presentacion
 
-La guia de exposicion de 5 minutos esta en:
-
-```text
-docs/presentacion.md
-```
-
-Incluye problema, solucion, arquitectura, demo y mejoras futuras.
+1. Problema: los clientes necesitan consultar servicios, tramites, productos personalizados, sede y contacto en un solo lugar.
+2. Solucion: la landing centraliza informacion del negocio y permite contacto directo por WhatsApp.
+3. Demo: mostrar navegacion, servicios, productos, boton de WhatsApp, sede y mapa.
+4. Tecnica: explicar Node.js, Express, Pug, `data/site.js`, CSS responsive y JavaScript vanilla.
+5. Cierre: mencionar mejoras futuras como panel administrativo, base de datos o formulario de contacto.
 
 ## Notas Importantes
 
