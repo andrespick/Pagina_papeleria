@@ -1,121 +1,4 @@
 doctype html
--
-  const whatsappBase = "https://wa.me/573202878530";
-  const whatsapp = (message) => `${whatsappBase}?text=${encodeURIComponent(message)}`;
-
-  const navItems = [
-    { label: "Servicios", href: "#servicios" },
-    { label: "Papelería y oficina", href: "#papeleria-oficina" },
-    { label: "Trámites", href: "#tramites" },
-    { label: "Puntored", href: "#puntored" },
-    { label: "Productos", href: "#productos" },
-    { label: "Sede", href: "#sede" },
-  ];
-
-  const serviceGroups = [
-    {
-      id: "papeleria-oficina",
-      title: "Servicios de papelería y oficina",
-      className: "office",
-      iconSrc: "https://unpkg.com/@tabler/icons@3.37.1/icons/outline/notebook.svg",
-      summary: "Copias, impresiones, trabajos en computador y acabados para documentos.",
-      message: "Hola, quiero consultar un servicio de papelería u oficina.",
-      items: [
-        "Fotocopias a color y blanco y negro.",
-        "Impresiones láser a color y blanco y negro.",
-        "Trabajos en computador.",
-        "Transcripción y redacción de textos.",
-        "Anillado.",
-        "Laminado al calor desde tamaño cédula hasta oficio.",
-        "Escáner.",
-        "Guillotina de papel.",
-      ],
-    },
-    {
-      id: "tramites",
-      title: "Servicios de trámites",
-      className: "process",
-      iconSrc: "https://unpkg.com/@tabler/icons@3.37.1/icons/outline/certificate.svg",
-      summary: "Apoyo para certificados, recibos, radicaciones y gestiones virtuales.",
-      message: "Hola, quiero consultar un trámite virtual.",
-      items: [
-        "Expedición de recibos de pago de estampillas municipales y departamentales.",
-        "Expedición de certificados de tradición.",
-        "Radicación de PQRS ante la Alcaldía y otras entidades públicas.",
-        "Certificados de antecedentes judiciales, Contraloría y Procuraduría.",
-        "Trámites virtuales diversos.",
-      ],
-    },
-    {
-      id: "puntored",
-      title: "Servicios Puntored",
-      className: "puntored",
-      iconSrc: "img/PuntoRed.png",
-      summary: "Pagos, recargas, movimientos bancarios, giros y servicios digitales.",
-      intro: "Con el servicio Puntored te ofrecemos:",
-      message: "Hola, quiero consultar un servicio Puntored.",
-      items: [
-        "Recargas a celular.",
-        "Pago de servicios públicos y privados en más de 15.000 convenios.",
-        "Retiros y depósitos bancarios: Davivienda, Colpatria, Grupo Aval.",
-        "Depósitos y retiros en billeteras móviles: Daviplata, Nequi.",
-        "Apuestas deportivas.",
-        "Recargas a Netflix, DirecTV y cuentas de videojuegos.",
-        "Giros por Western Union.",
-      ],
-    },
-  ];
-
-  const products = [
-    {
-      id: "botones-publicitarios",
-      title: "Botones publicitarios",
-      className: "buttons",
-      image: "img/BotonPublicitario.webp",
-      imageAlt: "Botones publicitarios personalizados",
-      message: "Hola, quiero consultar botones publicitarios.",
-      text: "Botones personalizados para publicidad, eventos y promoción de marca.",
-    },
-    {
-      id: "camisetas-estampadas",
-      title: "Camisetas estampadas",
-      className: "shirts",
-      image: "img/camisetasEstampadas.jpg",
-      imageAlt: "Camisetas estampadas personalizadas",
-      message: "Hola, quiero consultar camisetas estampadas.",
-      text: "Estampados personalizados para camisetas, diseños promocionales y detalles especiales.",
-    },
-    {
-      id: "mugs-personalizados",
-      title: "Mugs personalizados",
-      className: "mugs",
-      image: "img/mugs-personalizado.jpg",
-      imageAlt: "Mugs personalizados",
-      message: "Hola, quiero consultar mugs personalizados.",
-      text: "Personalización de vasos de café y mugs para regalos, marca o eventos.",
-    },
-  ];
-
-  const branch = {
-    name: "Copyservices",
-    category: "Papelería, trámites y servicios digitales",
-    address: "Conjunto Residencial Alto Piamonte, Alto, Cali, Valle del Cauca",
-    phone: "+57 320 2878530",
-    email: "copyservices.co@gmail.com",
-    schedule: "Abierto - Cierra 8 PM",
-  };
-
-  const footerServices = [
-    { label: "Papelería y oficina", href: "#papeleria-oficina" },
-    { label: "Trámites", href: "#tramites" },
-    { label: "Puntored", href: "#puntored" },
-  ];
-
-  const footerProducts = [
-    { label: "Botones publicitarios", href: "#botones-publicitarios" },
-    { label: "Camisetas estampadas", href: "#camisetas-estampadas" },
-    { label: "Mugs personalizados", href: "#mugs-personalizados" },
-  ];
 
 mixin simpleIcon(slug, label, extraClass)
   img.simple-icon(class=extraClass src=`https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/${slug}.svg` width="20" height="20" alt=label loading="lazy")
@@ -169,7 +52,7 @@ mixin productCard(product)
 mixin branchCard(branch)
   article.branch-card
     .branch-card__photo
-      img.branch-card__image(src="img/StreadView.jpg" alt=`Fachada de ${branch.name}`)
+      img.branch-card__image(src=branch.image alt=`Fachada de ${branch.name}`)
     .branch-card__content
       h3.branch-card__title= branch.name
       p.branch-card__meta
@@ -185,7 +68,7 @@ mixin branchCard(branch)
       .branch-card__footer
         span.tag= branch.schedule
       a.branch-card__maps(
-        href="https://www.google.com/maps?cid=3724333998245387144"
+        href=branch.mapUrl
         target="_blank"
         rel="noopener noreferrer"
       )
@@ -204,8 +87,8 @@ html(lang="es")
   head
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1")
-    title CopyServices - Papelería, trámites y Puntored
-    link(rel="icon" type="image/svg+xml" href="img/logos/LOGO%20FONDO%20BLANCO.svg")
+    title= brand.title
+    link(rel="icon" type="image/svg+xml" href=brand.logo)
     link(rel="stylesheet" href="css/styles.css")
 
   body
@@ -214,21 +97,21 @@ html(lang="es")
         .container.header-row
           a.brand(href="#inicio" aria-label="Inicio")
             span.brand__mark(aria-hidden="true")
-              img.brand__logo(src="img/logos/LOGO%20FONDO%20BLANCO.svg" alt="")
+              img.brand__logo(src=brand.logo alt="")
             span.brand__text
-              span.brand__name CopyServices
-              span.brand__tagline Donde tus ideas toman forma.
+              span.brand__name= brand.name
+              span.brand__tagline= brand.tagline
 
           nav.header-icons(aria-label="Acciones rápidas")
             a.icon-btn(
-              href="https://www.facebook.com/p/Copyservices-100086411343836"
+              href=contact.facebookUrl
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
             )
               +simpleIcon("facebook", "Facebook")
             a.icon-btn(
-              href=whatsapp("Hola, quiero información sobre CopyServices.")
+              href=whatsapp(contact.defaultMessage)
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -250,8 +133,8 @@ html(lang="es")
         .container
           .hero-panel
             img.hero-panel__image(
-              src="img/Banner%20Hero2.png"
-              alt="Banner de servicios CopyServices"
+              src=hero.image
+              alt=hero.alt
               decoding="async"
               fetchpriority="high"
             )
@@ -284,7 +167,7 @@ html(lang="es")
                   title="Mapa - Sede Copyservices"
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
-                  src="https://www.google.com/maps?cid=3724333998245387144&output=embed"
+                  src=branch.mapEmbedUrl
                   data-map-frame
                 )
 
@@ -295,23 +178,23 @@ html(lang="es")
             ul.footer-list
               li
                 span.muted WhatsApp:
-                |  +57 320 2878530
+                |  #{contact.phone}
               li
                 span.muted Correo:
-                |  copyservices.co@gmail.com
+                |  #{contact.email}
               li
-                a(href="https://www.google.com/maps?cid=3724333998245387144" target="_blank" rel="noopener noreferrer") Ver ubicación en Google Maps
+                a(href=map.url target="_blank" rel="noopener noreferrer") Ver ubicación en Google Maps
 
             .footer-social(aria-label="Redes sociales y contacto")
               a.social(
-                href=whatsapp("Hola, quiero información sobre CopyServices.")
+                href=whatsapp(contact.defaultMessage)
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
               )
                 +simpleIcon("whatsapp", "WhatsApp")
               a.social(
-                href="https://www.facebook.com/p/Copyservices-100086411343836"
+                href=contact.facebookUrl
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -327,7 +210,7 @@ html(lang="es")
             span.muted Papelería, trámites y Puntored en Cali
 
     a.whatsapp-float(
-      href=whatsapp("Hola, quiero información sobre CopyServices.")
+      href=whatsapp(contact.defaultMessage)
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Abrir chat de WhatsApp"

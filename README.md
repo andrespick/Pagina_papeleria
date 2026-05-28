@@ -1,14 +1,15 @@
-﻿# CopyServices Landing Page
+# CopyServices Landing Page
 
-Landing page responsive para CopyServices, una papeleria/imprenta en Cali. El proyecto usa Pug como fuente principal de HTML, CSS propio y JavaScript ligero para interacciones del sitio.
+Landing page responsive para CopyServices, una papeleria y punto de servicios en Cali. El proyecto usa Node.js, Express y Pug para renderizar la pagina desde datos reutilizables, y tambien puede generar un `index.html` estatico para publicar en hosting simple.
 
 ## Tecnologias
 
-- HTML generado desde Pug
-- CSS mobile-first
-- JavaScript vanilla
-- Node.js para compilar
-- Simple Icons por CDN para iconos de redes sociales
+- Node.js con Express
+- Pug como motor de plantillas
+- Datos centralizados en `data/site.js`
+- CSS responsive mobile-first
+- JavaScript vanilla para el menu movil
+- Assets locales en `img/`, `css/` y `js/`
 
 ## Requisitos
 
@@ -31,87 +32,86 @@ npm.cmd install
 
 En PowerShell se recomienda usar `npm.cmd` porque algunos equipos bloquean `npm.ps1` por politicas de ejecucion.
 
-## Ejecutar o Probar la Pagina
+## Ejecutar con servidor Node
 
-La pagina es estatica. Para verla en el navegador:
+Para servir la landing con Express y Pug:
 
 ```powershell
-start index.html
+npm.cmd start
 ```
 
-Tambien puedes abrir manualmente el archivo `index.html` desde el explorador de Windows.
-
-## Compilar Pug
-
-El archivo fuente principal es:
+Luego abre:
 
 ```text
-index.pug
+http://localhost:3000
 ```
 
-Cada vez que edites `index.pug`, recompila:
+El servidor tambien expone los datos principales en:
+
+```text
+http://localhost:3000/api/site
+```
+
+## Compilar HTML estatico
+
+Para generar o actualizar `index.html` desde `index.pug`:
 
 ```powershell
 npm.cmd run build
 ```
 
-Ese comando genera/actualiza:
-
-```text
-index.html
-```
-
-## Modo Watch
-
-Para recompilar automaticamente cuando cambie `index.pug`:
+Para recompilar automaticamente mientras editas:
 
 ```powershell
 npm.cmd run watch
 ```
 
-Deja esa terminal abierta mientras editas. Luego recarga el navegador.
-
 ## Estructura del Proyecto
 
 ```text
 .
-├── index.pug          # Fuente principal de la pagina
-├── index.html         # HTML compilado para abrir en navegador
-├── build.js           # Script de compilacion Pug -> HTML
-├── package.json       # Scripts y dependencias
-├── css/
-│   └── styles.css     # Estilos responsive mobile-first
-├── js/
-│   └── main.js        # Interacciones: menu movil, carrusel, toast
-├── img/
-│   ├── StreadView.jpg # Imagen usada en la tarjeta de sede
-│   └── logos/         # Logos e icono de pagina
-├── Desktop.png        # Mockup de referencia desktop
-└── mobile.png         # Mockup de referencia mobile
+|-- data/
+|   `-- site.js        # Servicios, productos, sede, contacto y helpers
+|-- docs/
+|   `-- presentacion.md
+|-- css/
+|   `-- styles.css
+|-- img/
+|   |-- Banner Hero2.png
+|   |-- BotonPublicitario.webp
+|   |-- PuntoRed.png
+|   |-- StreadView.jpg
+|   |-- camisetasEstampadas.jpg
+|   |-- mugs-personalizado.jpg
+|   `-- logos/
+|-- js/
+|   `-- main.js
+|-- build.js          # Compila Pug a HTML estatico
+|-- index.html        # HTML generado
+|-- index.pug         # Plantilla principal
+|-- package.json
+`-- server.js         # Servidor Express + Pug
 ```
-
-## Flujo de Edicion Recomendado
-
-1. Edita contenido y estructura en `index.pug`.
-2. Edita estilos en `css/styles.css`.
-3. Edita interacciones en `js/main.js`.
-4. Ejecuta:
-
-```powershell
-npm.cmd run build
-```
-
-5. Abre o recarga `index.html` en el navegador.
 
 ## Funcionalidades Actuales
 
 - Header responsive con menu movil.
-- Hero visual inspirado en los mockups.
-- Tarjetas de servicios.
-- Carrusel interactivo de otros servicios.
-- Seccion de sede con imagen local y mapa embebido de Google Maps.
-- Boton flotante de WhatsApp conectado a `+57 320 2878530`.
-- Footer con datos de contacto y redes.
+- Hero visual con banner local de CopyServices.
+- Secciones de servicios de papeleria/oficina, tramites y Puntored.
+- Productos personalizados: botones, camisetas y mugs.
+- Botones de contacto directo por WhatsApp.
+- Sede con imagen local y mapa embebido de Google Maps.
+- Footer con contacto, redes y enlaces internos.
+- API simple de datos del sitio en `/api/site`.
+
+## Flujo de Edicion Recomendado
+
+1. Edita contenido en `data/site.js`.
+2. Edita estructura en `index.pug`.
+3. Edita estilos en `css/styles.css`.
+4. Edita interacciones en `js/main.js`.
+5. Prueba con `npm.cmd start`.
+6. Si necesitas HTML estatico, ejecuta `npm.cmd run build`.
 
 ## Contacto Configurado
 
@@ -122,26 +122,36 @@ Facebook: https://www.facebook.com/p/Copyservices-100086411343836
 WhatsApp: https://wa.me/573202878530
 ```
 
+## Presentacion
+
+La guia de exposicion de 5 minutos esta en:
+
+```text
+docs/presentacion.md
+```
+
+Incluye problema, solucion, arquitectura, demo y mejoras futuras.
+
 ## Notas Importantes
 
 - No edites `node_modules/`; esa carpeta se ignora con `.gitignore`.
-- No edites `index.html` como fuente principal si el cambio debe mantenerse. Edita `index.pug` y recompila.
+- No edites `index.html` como fuente principal si el cambio debe mantenerse. Edita `data/site.js` o `index.pug` y recompila.
+- Las rutas de imagenes estan normalizadas en minuscula con la carpeta `img/` para evitar problemas en Linux o GitHub Pages.
 - El mapa usa el `cid` de Google Maps del negocio.
-- El proyecto no tiene backend ni envio de formularios.
 
 ## Problemas Comunes
 
 Si PowerShell muestra un error parecido a que `npm.ps1` esta bloqueado, usa:
 
 ```powershell
+npm.cmd start
 npm.cmd run build
 ```
 
-Si cambiaste `index.pug` y no ves cambios en el navegador:
+Si cambiaste datos o Pug y no ves cambios en el HTML estatico:
 
 ```powershell
 npm.cmd run build
-start index.html
 ```
 
 Luego recarga la pestana del navegador con `Ctrl + F5`.

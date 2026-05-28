@@ -1,9 +1,11 @@
 {
   "scripts": {
     "build": "node build.js",
+    "start": "node server.js",
     "watch": "node build.js --watch"
   },
   "dependencies": {
+    "express": "^5.2.1",
     "pug": "^3.0.4"
   }
 }
